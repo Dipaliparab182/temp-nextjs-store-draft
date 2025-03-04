@@ -16,9 +16,9 @@ npm run dev
 
 ```tsx
 function HomePage() {
-  return <h1 className='text-3xl'>HomePage</h1>;
+  return <h1 className="text-3xl">HomePage</h1>
 }
-export default HomePage;
+export default HomePage
 ```
 
 - layout.tsx
@@ -27,7 +27,7 @@ export default HomePage;
 export const metadata: Metadata = {
   title: 'Next Store',
   description: 'A nifty store built with Next.js',
-};
+}
 ```
 
 - get a hold of the README.MD
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
 
 ```tsx
 function AboutPage() {
-  return <div>AboutPage</div>;
+  return <div>AboutPage</div>
 }
-export default AboutPage;
+export default AboutPage
 ```
 
 ### Starter
@@ -84,23 +84,23 @@ Starter already has shadcn installed and configured. 👍
 - create globals/Container.tsx
 
 ```tsx
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 function Container({
   children,
   className,
 }: {
-  children: React.ReactNode;
-  className?: string;
+  children: React.ReactNode
+  className?: string
 }) {
   return (
     <div className={cn('mx-auto max-w-6xl xl:max-w-7xl px-8', className)}>
       {children}
     </div>
-  );
+  )
 }
 
-export default Container;
+export default Container
 ```
 
 cn() function takes any number of arguments (which are expected to be strings or falsy values), filters out any falsy values (like false, null, undefined, 0, NaN, and empty string ""), and then joins the remaining strings into a single string with spaces in between.
@@ -108,44 +108,44 @@ cn() function takes any number of arguments (which are expected to be strings or
 ### Navbar Component
 
 ```tsx
-import Logo from './Logo';
-import LinksDropdown from './LinksDropdown';
-import DarkMode from './DarkMode';
-import CartButton from './CartButton';
-import NavSearch from './NavSearch';
-import Container from '../global/Container';
+import Logo from './Logo'
+import LinksDropdown from './LinksDropdown'
+import DarkMode from './DarkMode'
+import CartButton from './CartButton'
+import NavSearch from './NavSearch'
+import Container from '../global/Container'
 function Navbar() {
   return (
-    <nav className='border-b '>
-      <Container className='flex flex-col sm:flex-row  sm:justify-between sm:items-center flex-wrap gap-4 py-8'>
+    <nav className="border-b ">
+      <Container className="flex flex-col sm:flex-row  sm:justify-between sm:items-center flex-wrap gap-4 py-8">
         <Logo />
         <NavSearch />
-        <div className='flex gap-4 items-center '>
+        <div className="flex gap-4 items-center ">
           <CartButton />
           <DarkMode />
           <LinksDropdown />
         </div>
       </Container>
     </nav>
-  );
+  )
 }
-export default Navbar;
+export default Navbar
 ```
 
 - layout.tsx
 
 ```tsx
-import Navbar from '@/components/navbar/Navbar';
-import Container from '@/components/global/Container';
+import Navbar from '@/components/navbar/Navbar'
+import Container from '@/components/global/Container'
 
 return (
-  <html lang='en'>
+  <html lang="en">
     <body className={inter.className}>
       <Navbar />
-      <Container className='py-20'>{children}</Container>
+      <Container className="py-20">{children}</Container>
     </body>
   </html>
-);
+)
 ```
 
 ### Logo
@@ -159,67 +159,67 @@ npm install react-icons
 Logo.tsx
 
 ```tsx
-import Link from 'next/link';
-import { Button } from '../ui/button';
-import { LuArmchair } from 'react-icons/lu';
-import { VscCode } from 'react-icons/vsc';
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import { LuArmchair } from 'react-icons/lu'
+import { VscCode } from 'react-icons/vsc'
 
 function Logo() {
   return (
-    <Button size='icon' asChild>
-      <Link href='/'>
-        <VscCode className='w-6 h-6' />
+    <Button size="icon" asChild>
+      <Link href="/">
+        <VscCode className="w-6 h-6" />
       </Link>
     </Button>
-  );
+  )
 }
 
-export default Logo;
+export default Logo
 ```
 
 ### NavSearch Component
 
 ```tsx
-import { Input } from '../ui/input';
+import { Input } from '../ui/input'
 
 function NavSearch() {
   return (
     <Input
-      type='search'
-      placeholder='search product...'
-      className='max-w-xs dark:bg-muted '
+      type="search"
+      placeholder="search product..."
+      className="max-w-xs dark:bg-muted "
     />
-  );
+  )
 }
-export default NavSearch;
+export default NavSearch
 ```
 
 ### CartButton Component
 
 ```tsx
-import { Button } from '@/components/ui/button';
-import { LuShoppingCart } from 'react-icons/lu';
-import Link from 'next/link';
+import { Button } from '@/components/ui/button'
+import { LuShoppingCart } from 'react-icons/lu'
+import Link from 'next/link'
 async function CartButton() {
   // temp
-  const numItemsInCart = 9;
+  const numItemsInCart = 9
   return (
     <Button
       asChild
-      variant='outline'
-      size='icon'
-      className='flex justify-center items-center relative'
+      variant="outline"
+      size="icon"
+      className="flex justify-center items-center relative"
     >
-      <Link href='/cart'>
+      <Link href="/cart">
         <LuShoppingCart />
-        <span className='absolute -top-3 -right-3 bg-primary text-white rounded-full h-6 w-6 flex items-center justify-center text-xs'>
+        <span className="absolute -top-3 -right-3 bg-primary text-white rounded-full h-6 w-6 flex items-center justify-center text-xs">
           {numItemsInCart}
         </span>
       </Link>
     </Button>
-  );
+  )
 }
-export default CartButton;
+export default CartButton
 ```
 
 ### Theme
@@ -234,29 +234,29 @@ export default CartButton;
 - create app/providers.tsx
 
 ```tsx
-'use client';
+'use client'
 
 function Providers({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <>{children}</>
 }
-export default Providers;
+export default Providers
 ```
 
 layout.tsx
 
 ```tsx
-import Providers from './providers';
+import Providers from './providers'
 
 return (
-  <html lang='en' suppressHydrationWarning>
+  <html lang="en" suppressHydrationWarning>
     <body className={inter.className}>
       <Providers>
         <Navbar />
-        <Container className='py-20'>{children}</Container>
+        <Container className="py-20">{children}</Container>
       </Providers>
     </body>
   </html>
-);
+)
 ```
 
 ### Shadcn DarkMode
@@ -264,42 +264,42 @@ return (
 [Next.js Dark Mode](https://ui.shadcn.com/docs/dark-mode/next)
 
 ```sh
-npm install next-themes
+
 ```
 
 - create app/theme-provider.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import * as React from 'react';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import { type ThemeProviderProps } from 'next-themes/dist/types';
+import * as React from 'react'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { type ThemeProviderProps } from 'next-themes/dist/types'
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
 ```
 
 providers.tsx
 
 ```tsx
-'use client';
-import { ThemeProvider } from './theme-provider';
+'use client'
+import { ThemeProvider } from './theme-provider'
 
 function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
-      attribute='class'
-      defaultTheme='system'
+      attribute="class"
+      defaultTheme="system"
       enableSystem
       disableTransitionOnChange
     >
       {children}
     </ThemeProvider>
-  );
+  )
 }
-export default Providers;
+export default Providers
 ```
 
 ### DarkMode Component
@@ -307,33 +307,33 @@ export default Providers;
 - make sure you export as default !!!
 
 ```tsx
-'use client';
+'use client'
 
-import * as React from 'react';
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import { useTheme } from 'next-themes';
+import * as React from 'react'
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import { useTheme } from 'next-themes'
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu'
 
 export default function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { setTheme } = useTheme()
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' size='icon'>
-          <SunIcon className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
-          <MoonIcon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
-          <span className='sr-only'>Toggle theme</span>
+        <Button variant="outline" size="icon">
+          <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
+      <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>
           Light
         </DropdownMenuItem>
@@ -345,7 +345,7 @@ export default function ModeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }
 ```
 
@@ -355,9 +355,9 @@ export default function ModeToggle() {
 
 ```ts
 type NavLink = {
-  href: string;
-  label: string;
-};
+  href: string
+  label: string
+}
 
 export const links: NavLink[] = [
   { href: '/', label: 'home' },
@@ -366,7 +366,7 @@ export const links: NavLink[] = [
   { href: '/favorites', label: 'favorites' },
   { href: '/cart', label: 'cart' },
   { href: '/orders', label: 'orders' },
-];
+]
 ```
 
 ### LinksDropdown Component
@@ -378,35 +378,35 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { LuAlignLeft } from 'react-icons/lu';
-import Link from 'next/link';
-import { Button } from '../ui/button';
-import { links } from '@/utils/links';
+} from '@/components/ui/dropdown-menu'
+import { LuAlignLeft } from 'react-icons/lu'
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import { links } from '@/utils/links'
 
 function LinksDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' className='flex gap-4 max-w-[100px]'>
-          <LuAlignLeft className='w-6 h-6' />
+        <Button variant="outline" className="flex gap-4 max-w-[100px]">
+          <LuAlignLeft className="w-6 h-6" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='w-40' align='start' sideOffset={10}>
+      <DropdownMenuContent className="w-40" align="start" sideOffset={10}>
         {links.map((link) => {
           return (
             <DropdownMenuItem key={link.href}>
-              <Link href={link.href} className='capitalize w-full'>
+              <Link href={link.href} className="capitalize w-full">
                 {link.label}
               </Link>
             </DropdownMenuItem>
-          );
+          )
         })}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }
-export default LinksDropdown;
+export default LinksDropdown
 ```
 
 ### Supabase
@@ -446,23 +446,23 @@ In development, the command next dev clears Node.js cache on run. This in turn i
 - create utils/db.ts
 
 ```ts
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
 
 const prismaClientSingleton = () => {
-  return new PrismaClient();
-};
+  return new PrismaClient()
+}
 
-type PrismaClientSingleton = ReturnType<typeof prismaClientSingleton>;
+type PrismaClientSingleton = ReturnType<typeof prismaClientSingleton>
 
 const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClientSingleton | undefined;
-};
+  prisma: PrismaClientSingleton | undefined
+}
 
-const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
+const prisma = globalForPrisma.prisma ?? prismaClientSingleton()
 
-export default prisma;
+export default prisma
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 ```
 
 ### Connect Supabase with Prisma
@@ -521,13 +521,13 @@ const task = await prisma.task.create({
   data: {
     content: 'some task',
   },
-});
+})
 ```
 
 - Get All Records
 
 ```js
-const tasks = await prisma.task.findMany();
+const tasks = await prisma.task.findMany()
 ```
 
 - Get record by ID or unique identifier
@@ -538,14 +538,14 @@ const user = await prisma.user.findUnique({
   where: {
     email: 'elsa@prisma.io',
   },
-});
+})
 
 // By ID
 const task = await prisma.task.findUnique({
   where: {
     id: id,
   },
-});
+})
 ```
 
 - Update Record
@@ -558,7 +558,7 @@ const updateTask = await prisma.task.update({
   data: {
     content: 'updated task',
   },
-});
+})
 ```
 
 - Update or create records
@@ -574,7 +574,7 @@ const upsertTask = await prisma.task.upsert({
   create: {
     content: 'some value',
   },
-});
+})
 ```
 
 - Delete a single record
@@ -584,7 +584,7 @@ const deleteTask = await prisma.task.delete({
   where: {
     id: id,
   },
-});
+})
 ```
 
 ### Practice Prisma Queries
@@ -592,30 +592,30 @@ const deleteTask = await prisma.task.delete({
 about/page.tsx
 
 ```tsx
-import db from '@/utils/db';
+import db from '@/utils/db'
 
 async function AboutPage() {
   const profile = await db.testProfile.create({
     data: {
       name: 'random name',
     },
-  });
+  })
 
-  const users = await db.testProfile.findMany();
+  const users = await db.testProfile.findMany()
 
   return (
     <div>
       {users.map((user) => {
         return (
-          <h2 key={user.id} className='text-2xl font-bold'>
+          <h2 key={user.id} className="text-2xl font-bold">
             {user.name}
           </h2>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
-export default AboutPage;
+export default AboutPage
 ```
 
 ### Product Model
@@ -695,26 +695,26 @@ npm run dev
 - create prisma/seed.js
 
 ```js
-const { PrismaClient } = require('@prisma/client');
-const products = require('./products.json');
-const prisma = new PrismaClient();
+const { PrismaClient } = require('@prisma/client')
+const products = require('./products.json')
+const prisma = new PrismaClient()
 
 async function main() {
   for (const product of products) {
     await prisma.product.create({
       data: product,
-    });
+    })
   }
 }
 main()
   .then(async () => {
-    await prisma.$disconnect();
+    await prisma.$disconnect()
   })
   .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })
 ```
 
 ```sh
@@ -747,8 +747,8 @@ node prisma/seed
 ### Home Page
 
 ```tsx
-import FeaturedProducts from '@/components/home/FeaturedProducts';
-import Hero from '@/components/home/Hero';
+import FeaturedProducts from '@/components/home/FeaturedProducts'
+import Hero from '@/components/home/Hero'
 
 function HomPage() {
   return (
@@ -756,45 +756,45 @@ function HomPage() {
       <Hero />
       <FeaturedProducts />
     </>
-  );
+  )
 }
-export default HomPage;
+export default HomPage
 ```
 
 ### SectionTitle Component
 
 ```tsx
-import { Separator } from '@/components/ui/separator';
+import { Separator } from '@/components/ui/separator'
 
 function SectionTitle({ text }: { text: string }) {
   return (
     <div>
-      <h2 className='text-3xl font-medium tracking-wider capitalize mb-8'>
+      <h2 className="text-3xl font-medium tracking-wider capitalize mb-8">
         {text}
       </h2>
       <Separator />
     </div>
-  );
+  )
 }
-export default SectionTitle;
+export default SectionTitle
 ```
 
 ### EmptyList Component
 
 ```tsx
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 
 function EmptyList({
   heading = 'No items found.',
   className,
 }: {
-  heading?: string;
-  className?: string;
+  heading?: string
+  className?: string
 }) {
-  return <h2 className={cn('text-xl ', className)}>{heading}</h2>;
+  return <h2 className={cn('text-xl ', className)}>{heading}</h2>
 }
 
-export default EmptyList;
+export default EmptyList
 ```
 
 ### FetchFeaturedProducts and FetchAllProducts
@@ -802,44 +802,44 @@ export default EmptyList;
 - create utils/actions.ts
 
 ```ts
-import db from '@/utils/db';
+import db from '@/utils/db'
 
 export const fetchFeaturedProducts = async () => {
   const products = await db.product.findMany({
     where: {
       featured: true,
     },
-  });
-  return products;
-};
+  })
+  return products
+}
 
 export const fetchAllProducts = () => {
   return db.product.findMany({
     orderBy: {
       createdAt: 'desc',
     },
-  });
-};
+  })
+}
 ```
 
 ### FeaturedProducts Component
 
 ```tsx
-import { fetchFeaturedProducts } from '@/utils/actions';
-import EmptyList from '../global/EmptyList';
-import SectionTitle from '../global/SectionTitle';
-import ProductsGrid from '../products/ProductsGrid';
+import { fetchFeaturedProducts } from '@/utils/actions'
+import EmptyList from '../global/EmptyList'
+import SectionTitle from '../global/SectionTitle'
+import ProductsGrid from '../products/ProductsGrid'
 async function FeaturedProducts() {
-  const products = await fetchFeaturedProducts();
-  if (products.length === 0) return <EmptyList />;
+  const products = await fetchFeaturedProducts()
+  if (products.length === 0) return <EmptyList />
   return (
-    <section className='pt-24'>
-      <SectionTitle text='featured products' />
+    <section className="pt-24">
+      <SectionTitle text="featured products" />
       <ProductsGrid products={products} />
     </section>
-  );
+  )
 }
-export default FeaturedProducts;
+export default FeaturedProducts
 ```
 
 ### FormatCurrency
@@ -848,80 +848,80 @@ export default FeaturedProducts;
 
 ```ts
 export const formatCurrency = (amount: number | null) => {
-  const value = amount || 0;
+  const value = amount || 0
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(value);
-};
+  }).format(value)
+}
 ```
 
 ### FavoriteToggleButton
 
 ```tsx
-import { FaHeart } from 'react-icons/fa';
-import { Button } from '@/components/ui/button';
+import { FaHeart } from 'react-icons/fa'
+import { Button } from '@/components/ui/button'
 function FavoriteToggleButton({ productId }: { productId: string }) {
   return (
-    <Button size='icon' variant='outline' className='p-2 cursor-pointer'>
+    <Button size="icon" variant="outline" className="p-2 cursor-pointer">
       <FaHeart />
     </Button>
-  );
+  )
 }
-export default FavoriteToggleButton;
+export default FavoriteToggleButton
 ```
 
 ### ProductsGrid
 
 ```tsx
-import { Product } from '@prisma/client';
-import { formatCurrency } from '@/utils/format';
-import { Card, CardContent } from '@/components/ui/card';
-import Link from 'next/link';
-import Image from 'next/image';
-import FavoriteToggleButton from './FavoriteToggleButton';
+import { Product } from '@prisma/client'
+import { formatCurrency } from '@/utils/format'
+import { Card, CardContent } from '@/components/ui/card'
+import Link from 'next/link'
+import Image from 'next/image'
+import FavoriteToggleButton from './FavoriteToggleButton'
 
 function ProductsGrid({ products }: { products: Product[] }) {
   return (
-    <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+    <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => {
-        const { name, price, image } = product;
-        const productId = product.id;
-        const dollarsAmount = formatCurrency(price);
+        const { name, price, image } = product
+        const productId = product.id
+        const dollarsAmount = formatCurrency(price)
         return (
-          <article key={productId} className='group relative'>
+          <article key={productId} className="group relative">
             <Link href={`/products/${productId}`}>
-              <Card className='transform group-hover:shadow-xl transition-shadow duration-500'>
-                <CardContent className='p-4'>
-                  <div className='relative h-64 md:h-48 rounded overflow-hidden '>
+              <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
+                <CardContent className="p-4">
+                  <div className="relative h-64 md:h-48 rounded overflow-hidden ">
                     <Image
                       src={image}
                       alt={name}
                       fill
-                      sizes='(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw'
+                      sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
                       priority
-                      className='rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500'
+                      className="rounded w-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
-                  <div className='mt-4 text-center'>
-                    <h2 className='text-lg  capitalize'>{name}</h2>
-                    <p className='text-muted-foreground  mt-2'>
+                  <div className="mt-4 text-center">
+                    <h2 className="text-lg  capitalize">{name}</h2>
+                    <p className="text-muted-foreground  mt-2">
                       {dollarsAmount}
                     </p>
                   </div>
                 </CardContent>
               </Card>
             </Link>
-            <div className='absolute top-7 right-7 z-5'>
+            <div className="absolute top-7 right-7 z-5">
               <FavoriteToggleButton productId={productId} />
             </div>
           </article>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
-export default ProductsGrid;
+export default ProductsGrid
 ```
 
 ### RemotePatterns
@@ -937,40 +937,40 @@ const nextConfig = {
       },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
 ```
 
 ### Hero Component
 
 ```tsx
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import HeroCarousel from './HeroCarousel';
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import HeroCarousel from './HeroCarousel'
 
 function Hero() {
   return (
-    <section className='grid grid-cols-1 lg:grid-cols-2 gap-24 items-center'>
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
       <div>
-        <h1 className='max-w-2xl font-bold text-4xl tracking-tight sm:text-6xl'>
+        <h1 className="max-w-2xl font-bold text-4xl tracking-tight sm:text-6xl">
           We are changing the way people shop
         </h1>
-        <p className='mt-8 max-w-xl text-lg leading-8 text-muted-foreground'>
+        <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et
           voluptas saepe in quae voluptate, laborum maiores possimus illum
           reprehenderit aut delectus veniam cum perferendis unde sint doloremque
           non nam.
         </p>
-        <Button asChild size='lg' className='mt-10'>
-          <Link href='/products'>Our Products</Link>
+        <Button asChild size="lg" className="mt-10">
+          <Link href="/products">Our Products</Link>
         </Button>
       </div>
       <HeroCarousel />
     </section>
-  );
+  )
 }
-export default Hero;
+export default Hero
 ```
 
 ### Product Images
@@ -986,44 +986,44 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
-import { Card, CardContent } from '@/components/ui/card';
-import Image from 'next/image';
-import hero1 from '@/public/images/hero1.jpg';
-import hero2 from '@/public/images/hero2.jpg';
-import hero3 from '@/public/images/hero3.jpg';
-import hero4 from '@/public/images/hero4.jpg';
+} from '@/components/ui/carousel'
+import { Card, CardContent } from '@/components/ui/card'
+import Image from 'next/image'
+import hero1 from '@/public/images/hero1.jpg'
+import hero2 from '@/public/images/hero2.jpg'
+import hero3 from '@/public/images/hero3.jpg'
+import hero4 from '@/public/images/hero4.jpg'
 
-const carouselImages = [hero1, hero2, hero3, hero4];
+const carouselImages = [hero1, hero2, hero3, hero4]
 
 function HeroCarousel() {
   return (
-    <div className='hidden lg:block'>
+    <div className="hidden lg:block">
       <Carousel>
         <CarouselContent>
           {carouselImages.map((image, index) => {
             return (
               <CarouselItem key={index}>
                 <Card>
-                  <CardContent className='p-2'>
+                  <CardContent className="p-2">
                     <Image
                       src={image}
-                      alt='hero'
-                      className='w-full h-[24rem] rounded-md object-cover'
+                      alt="hero"
+                      className="w-full h-[24rem] rounded-md object-cover"
                     />
                   </CardContent>
                 </Card>
               </CarouselItem>
-            );
+            )
           })}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
     </div>
-  );
+  )
 }
-export default HeroCarousel;
+export default HeroCarousel
 ```
 
 ### About Page
@@ -1032,22 +1032,22 @@ export default HeroCarousel;
 function AboutPage() {
   return (
     <section>
-      <h1 className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center text-4xl font-bold leading-none tracking-wide sm:text-6xl'>
+      <h1 className="flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center text-4xl font-bold leading-none tracking-wide sm:text-6xl">
         We love
-        <span className='bg-primary py-2 px-4 rounded-lg tracking-widest text-white'>
+        <span className="bg-primary py-2 px-4 rounded-lg tracking-widest text-white">
           store
         </span>
       </h1>
-      <p className='mt-6 text-lg tracking-wide leading-8 max-w-2xl mx-auto text-muted-foreground'>
+      <p className="mt-6 text-lg tracking-wide leading-8 max-w-2xl mx-auto text-muted-foreground">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero hic
         distinctio ducimus temporibus nobis autem laboriosam repellat, magni
         fugiat minima excepturi neque, tenetur possimus nihil atque! Culpa nulla
         labore nam?
       </p>
     </section>
-  );
+  )
 }
-export default AboutPage;
+export default AboutPage
 ```
 
 ### Suspense Component
@@ -1055,10 +1055,10 @@ export default AboutPage;
 app/page.tsx
 
 ```tsx
-import FeaturedProducts from '@/components/home/FeaturedProducts';
-import Hero from '@/components/home/Hero';
-import LoadingContainer from '@/components/global/LoadingContainer';
-import { Suspense } from 'react';
+import FeaturedProducts from '@/components/home/FeaturedProducts'
+import Hero from '@/components/home/Hero'
+import LoadingContainer from '@/components/global/LoadingContainer'
+import { Suspense } from 'react'
 function HomPage() {
   return (
     <>
@@ -1067,39 +1067,39 @@ function HomPage() {
         <FeaturedProducts />
       </Suspense>
     </>
-  );
+  )
 }
-export default HomPage;
+export default HomPage
 ```
 
 ### LoadingContainer Component
 
 ```tsx
-import { Skeleton } from '../ui/skeleton';
-import { Card, CardContent } from '../ui/card';
+import { Skeleton } from '../ui/skeleton'
+import { Card, CardContent } from '../ui/card'
 
 function LoadingContainer() {
   return (
-    <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+    <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       <LoadingProduct />
       <LoadingProduct />
       <LoadingProduct />
     </div>
-  );
+  )
 }
 
 function LoadingProduct() {
   return (
     <Card>
-      <CardContent className='p-4'>
-        <Skeleton className='h-48 w-full' />
-        <Skeleton className='h-4 w-3/4 mt-4' />
-        <Skeleton className='h-4 w-1/4 mt-4' />
+      <CardContent className="p-4">
+        <Skeleton className="h-48 w-full" />
+        <Skeleton className="h-4 w-3/4 mt-4" />
+        <Skeleton className="h-4 w-1/4 mt-4" />
       </CardContent>
     </Card>
-  );
+  )
 }
-export default LoadingContainer;
+export default LoadingContainer
 ```
 
 ### Products Page - Loading
@@ -1107,70 +1107,70 @@ export default LoadingContainer;
 - create app/products/loading.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import LoadingContainer from '@/components/global/LoadingContainer';
+import LoadingContainer from '@/components/global/LoadingContainer'
 
 function loading() {
-  return <LoadingContainer />;
+  return <LoadingContainer />
 }
-export default loading;
+export default loading
 ```
 
 ### Products Page
 
 ```tsx
-import ProductsContainer from '@/components/products/ProductsContainer';
+import ProductsContainer from '@/components/products/ProductsContainer'
 
 async function ProductsPage({
   searchParams,
 }: {
-  searchParams: { layout?: string; search?: string };
+  searchParams: { layout?: string; search?: string }
 }) {
-  const layout = searchParams.layout || 'grid';
-  const search = searchParams.search || '';
+  const layout = searchParams.layout || 'grid'
+  const search = searchParams.search || ''
   return (
     <>
       <ProductsContainer layout={layout} search={search} />
     </>
-  );
+  )
 }
-export default ProductsPage;
+export default ProductsPage
 ```
 
 ### ProductsContainer Component
 
 ```tsx
-import ProductsGrid from './ProductsGrid';
-import ProductsList from './ProductsList';
-import { LuLayoutGrid, LuList } from 'react-icons/lu';
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
-import { fetchAllProducts } from '@/utils/actions';
-import Link from 'next/link';
+import ProductsGrid from './ProductsGrid'
+import ProductsList from './ProductsList'
+import { LuLayoutGrid, LuList } from 'react-icons/lu'
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
+import { fetchAllProducts } from '@/utils/actions'
+import Link from 'next/link'
 
 async function ProductsContainer({
   layout,
   search,
 }: {
-  layout: string;
-  search: string;
+  layout: string
+  search: string
 }) {
-  const products = await fetchAllProducts();
-  const totalProducts = products.length;
-  const searchTerm = search ? `&search=${search}` : '';
+  const products = await fetchAllProducts()
+  const totalProducts = products.length
+  const searchTerm = search ? `&search=${search}` : ''
   return (
     <>
       {/* HEADER */}
       <section>
-        <div className='flex justify-between items-center'>
-          <h4 className='font-medium text-lg'>
+        <div className="flex justify-between items-center">
+          <h4 className="font-medium text-lg">
             {totalProducts} product{totalProducts > 1 && 's'}
           </h4>
-          <div className='flex gap-x-4'>
+          <div className="flex gap-x-4">
             <Button
               variant={layout === 'grid' ? 'default' : 'ghost'}
-              size='icon'
+              size="icon"
               asChild
             >
               <Link href={`/products?layout=grid${searchTerm}`}>
@@ -1179,7 +1179,7 @@ async function ProductsContainer({
             </Button>
             <Button
               variant={layout === 'list' ? 'default' : 'ghost'}
-              size='icon'
+              size="icon"
               asChild
             >
               <Link href={`/products?layout=list${searchTerm}`}>
@@ -1188,12 +1188,12 @@ async function ProductsContainer({
             </Button>
           </div>
         </div>
-        <Separator className='mt-4' />
+        <Separator className="mt-4" />
       </section>
       {/* PRODUCTS */}
       <div>
         {totalProducts === 0 ? (
-          <h5 className='text-2xl mt-16'>
+          <h5 className="text-2xl mt-16">
             Sorry, no products matched your search...
           </h5>
         ) : layout === 'grid' ? (
@@ -1203,63 +1203,63 @@ async function ProductsContainer({
         )}
       </div>
     </>
-  );
+  )
 }
-export default ProductsContainer;
+export default ProductsContainer
 ```
 
 ### ProductsList Component
 
 ```tsx
-import { formatCurrency } from '@/utils/format';
-import Link from 'next/link';
-import { Card, CardContent } from '@/components/ui/card';
-import { Product } from '@prisma/client';
-import Image from 'next/image';
-import FavoriteToggleButton from './FavoriteToggleButton';
+import { formatCurrency } from '@/utils/format'
+import Link from 'next/link'
+import { Card, CardContent } from '@/components/ui/card'
+import { Product } from '@prisma/client'
+import Image from 'next/image'
+import FavoriteToggleButton from './FavoriteToggleButton'
 function ProductsList({ products }: { products: Product[] }) {
   return (
-    <div className='mt-12 grid gap-y-8'>
+    <div className="mt-12 grid gap-y-8">
       {products.map((product) => {
-        const { name, price, image, company } = product;
-        const dollarsAmount = formatCurrency(price);
-        const productId = product.id;
+        const { name, price, image, company } = product
+        const dollarsAmount = formatCurrency(price)
+        const productId = product.id
         return (
-          <article key={productId} className='group relative'>
+          <article key={productId} className="group relative">
             <Link href={`/products/${productId}`}>
-              <Card className='transform group-hover:shadow-xl transition-shadow duration-500'>
-                <CardContent className='p-8 gap-y-4 grid md:grid-cols-3'>
-                  <div className='relative h-64  md:h-48 md:w-48'>
+              <Card className="transform group-hover:shadow-xl transition-shadow duration-500">
+                <CardContent className="p-8 gap-y-4 grid md:grid-cols-3">
+                  <div className="relative h-64  md:h-48 md:w-48">
                     <Image
                       src={image}
                       alt={name}
                       fill
-                      sizes='(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw'
+                      sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
                       priority
-                      className='w-full rounded-md object-cover'
+                      className="w-full rounded-md object-cover"
                     />
                   </div>
 
                   <div>
-                    <h2 className='text-xl font-semibold capitalize'>{name}</h2>
-                    <h4 className='text-muted-foreground'>{company}</h4>
+                    <h2 className="text-xl font-semibold capitalize">{name}</h2>
+                    <h4 className="text-muted-foreground">{company}</h4>
                   </div>
-                  <p className='text-muted-foreground text-lg md:ml-auto'>
+                  <p className="text-muted-foreground text-lg md:ml-auto">
                     {dollarsAmount}
                   </p>
                 </CardContent>
               </Card>
             </Link>
-            <div className='absolute bottom-8 right-8 z-5'>
+            <div className="absolute bottom-8 right-8 z-5">
               <FavoriteToggleButton productId={productId} />
             </div>
           </article>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
-export default ProductsList;
+export default ProductsList
 ```
 
 ### NavSearch
@@ -1271,47 +1271,47 @@ npm i use-debounce
 ```
 
 ```tsx
-'use client';
-import { Input } from '../ui/input';
-import { useSearchParams, useRouter } from 'next/navigation';
-import { useDebouncedCallback } from 'use-debounce';
-import { useState, useEffect } from 'react';
+'use client'
+import { Input } from '../ui/input'
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useDebouncedCallback } from 'use-debounce'
+import { useState, useEffect } from 'react'
 
 function NavSearch() {
-  const searchParams = useSearchParams();
-  const { replace } = useRouter();
+  const searchParams = useSearchParams()
+  const { replace } = useRouter()
   const [search, setSearch] = useState(
     searchParams.get('search')?.toString() || ''
-  );
+  )
   const handleSearch = useDebouncedCallback((value: string) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams)
     if (value) {
-      params.set('search', value);
+      params.set('search', value)
     } else {
-      params.delete('search');
+      params.delete('search')
     }
-    replace(`/products?${params.toString()}`);
-  }, 300);
+    replace(`/products?${params.toString()}`)
+  }, 300)
 
   useEffect(() => {
     if (!searchParams.get('search')) {
-      setSearch('');
+      setSearch('')
     }
-  }, [searchParams.get('search')]);
+  }, [searchParams.get('search')])
   return (
     <Input
-      type='search'
-      placeholder='search product...'
-      className='max-w-xs dark:bg-muted '
+      type="search"
+      placeholder="search product..."
+      className="max-w-xs dark:bg-muted "
       onChange={(e) => {
-        setSearch(e.target.value);
-        handleSearch(e.target.value);
+        setSearch(e.target.value)
+        handleSearch(e.target.value)
       }}
       value={search}
     />
-  );
+  )
 }
-export default NavSearch;
+export default NavSearch
 ```
 
 ### Search Argument
@@ -1321,7 +1321,7 @@ export default NavSearch;
 ProductsContainer.tsx
 
 ```tsx
-const products = await fetchAllProducts({ search });
+const products = await fetchAllProducts({ search })
 ```
 
 - actions
@@ -1338,8 +1338,8 @@ export const fetchAllProducts = ({ search = '' }: { search: string }) => {
     orderBy: {
       createdAt: 'desc',
     },
-  });
-};
+  })
+}
 ```
 
 ### Wrap NavSearch in Suspense
@@ -1349,7 +1349,7 @@ export const fetchAllProducts = ({ search = '' }: { search: string }) => {
 Navbar.tsx
 
 ```tsx
-import { Suspense } from 'react';
+import { Suspense } from 'react'
 
 return (
   <>
@@ -1357,7 +1357,7 @@ return (
       <NavSearch />
     </Suspense>
   </>
-);
+)
 ```
 
 ### Single Product / Single Product - Setup
@@ -1365,19 +1365,19 @@ return (
 - actions.ts
 
 ```ts
-import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation'
 
 export const fetchSingleProduct = async (productId: string) => {
   const product = await db.product.findUnique({
     where: {
       id: productId,
     },
-  });
+  })
   if (!product) {
-    redirect('/products');
+    redirect('/products')
   }
-  return product;
-};
+  return product
+}
 ```
 
 ### Single Product - Components
@@ -1390,16 +1390,16 @@ export const fetchSingleProduct = async (productId: string) => {
 AddToCart.tsx
 
 ```tsx
-import { Button } from '../ui/button';
+import { Button } from '../ui/button'
 
 function AddToCart({ productId }: { productId: string }) {
   return (
-    <Button className='capitalize mt-8' size='lg'>
+    <Button className="capitalize mt-8" size="lg">
       add to cart
     </Button>
-  );
+  )
 }
-export default AddToCart;
+export default AddToCart
 ```
 
 BreadCrumbs.tsx
@@ -1412,56 +1412,56 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
+} from '@/components/ui/breadcrumb'
 
 function BreadCrumbs({ name }: { name: string }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href='/' className='capitalize text-lg'>
+          <BreadcrumbLink href="/" className="capitalize text-lg">
             home
           </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href='/products' className='capitalize text-lg'>
+          <BreadcrumbLink href="/products" className="capitalize text-lg">
             products
           </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage className='capitalize text-lg'>{name}</BreadcrumbPage>
+          <BreadcrumbPage className="capitalize text-lg">{name}</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }
-export default BreadCrumbs;
+export default BreadCrumbs
 ```
 
 ProductRating.tsx
 
 ```tsx
-import { FaStar } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa'
 
 async function ProductRating({ productId }: { productId: string }) {
-  const rating = 4.2;
-  const count = 25;
+  const rating = 4.2
+  const count = 25
 
-  const className = `flex gap-1 items-center text-md mt-1 mb-4`;
-  const countValue = `(${count}) reviews`;
+  const className = `flex gap-1 items-center text-md mt-1 mb-4`
+  const countValue = `(${count}) reviews`
   return (
     <span className={className}>
-      <FaStar className='w-3 h-3' />
+      <FaStar className="w-3 h-3" />
       {rating} {countValue}
     </span>
-  );
+  )
 }
 
-export default ProductRating;
+export default ProductRating
 ```
 
 ### Single Product - Page
@@ -1469,51 +1469,51 @@ export default ProductRating;
 - create app/products/[id]/page.tsx
 
 ```tsx
-import BreadCrumbs from '@/components/single-product/BreadCrumbs';
-import { fetchSingleProduct } from '@/utils/actions';
-import Image from 'next/image';
-import { formatCurrency } from '@/utils/format';
-import FavoriteToggleButton from '@/components/products/FavoriteToggleButton';
-import AddToCart from '@/components/single-product/AddToCart';
-import ProductRating from '@/components/single-product/ProductRating';
+import BreadCrumbs from '@/components/single-product/BreadCrumbs'
+import { fetchSingleProduct } from '@/utils/actions'
+import Image from 'next/image'
+import { formatCurrency } from '@/utils/format'
+import FavoriteToggleButton from '@/components/products/FavoriteToggleButton'
+import AddToCart from '@/components/single-product/AddToCart'
+import ProductRating from '@/components/single-product/ProductRating'
 async function SingleProductPage({ params }: { params: { id: string } }) {
-  const product = await fetchSingleProduct(params.id);
-  const { name, image, company, description, price } = product;
-  const dollarsAmount = formatCurrency(price);
+  const product = await fetchSingleProduct(params.id)
+  const { name, image, company, description, price } = product
+  const dollarsAmount = formatCurrency(price)
   return (
     <section>
       <BreadCrumbs name={product.name} />
-      <div className='mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16'>
+      <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16">
         {/* IMAGE FIRST COL */}
-        <div className='relative h-full'>
+        <div className="relative h-full">
           <Image
             src={image}
             alt={name}
             fill
-            sizes='(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw'
+            sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
             priority
-            className='w-full rounded-md object-cover'
+            className="w-full rounded-md object-cover"
           />
         </div>
         {/* PRODUCT INFO SECOND COL */}
         <div>
-          <div className='flex gap-x-8 items-center'>
-            <h1 className='capitalize text-3xl font-bold'>{name}</h1>
+          <div className="flex gap-x-8 items-center">
+            <h1 className="capitalize text-3xl font-bold">{name}</h1>
             <FavoriteToggleButton productId={params.id} />
           </div>
           <ProductRating productId={params.id} />
-          <h4 className='text-xl mt-2'>{company}</h4>
-          <p className='mt-3 text-md bg-muted inline-block p-2 rounded-md'>
+          <h4 className="text-xl mt-2">{company}</h4>
+          <p className="mt-3 text-md bg-muted inline-block p-2 rounded-md">
             {dollarsAmount}
           </p>
-          <p className='mt-6 leading-8 text-muted-foreground'>{description}</p>
+          <p className="mt-6 leading-8 text-muted-foreground">{description}</p>
           <AddToCart productId={params.id} />
         </div>
       </div>
     </section>
-  );
+  )
 }
-export default SingleProductPage;
+export default SingleProductPage
 ```
 
 ### Deploy On Vercel
@@ -1551,26 +1551,26 @@ git commit -m "first commit"
 providers.tsx
 
 ```tsx
-'use client';
-import { ThemeProvider } from './theme-provider';
-import { Toaster } from '@/components/ui/toaster';
+'use client'
+import { ThemeProvider } from './theme-provider'
+import { Toaster } from '@/components/ui/toaster'
 
 function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Toaster />
       <ThemeProvider
-        attribute='class'
-        defaultTheme='system'
+        attribute="class"
+        defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >
         {children}
       </ThemeProvider>
     </>
-  );
+  )
 }
-export default Providers;
+export default Providers
 ```
 
 ### Clerk
@@ -1600,36 +1600,36 @@ On the other hand, CLERK_SECRET_KEY is a server-side environment variable. It's 
 layout.tsx
 
 ```tsx
-import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs'
 
 return (
   <ClerkProvider>
-    <html lang='en' suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
           <Navbar />
-          <Container className='py-20'>{children}</Container>
+          <Container className="py-20">{children}</Container>
         </Providers>
       </body>
     </html>
   </ClerkProvider>
-);
+)
 ```
 
 - create middleware.ts
 
 ```ts
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const isPublicRoute = createRouteMatcher(['/', '/products(.*)', '/about']);
+const isPublicRoute = createRouteMatcher(['/', '/products(.*)', '/about'])
 
 export default clerkMiddleware((auth, req) => {
-  if (!isPublicRoute(req)) auth().protect();
-});
+  if (!isPublicRoute(req)) auth().protect()
+})
 
 export const config = {
   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
-};
+}
 ```
 
 - restart dev server
@@ -1642,42 +1642,42 @@ export const config = {
 ### SignOutButton Component
 
 ```tsx
-'use client';
-import { SignOutButton } from '@clerk/nextjs';
-import { useToast } from '../ui/use-toast';
-import Link from 'next/link';
+'use client'
+import { SignOutButton } from '@clerk/nextjs'
+import { useToast } from '../ui/use-toast'
+import Link from 'next/link'
 
 function SignOutLink() {
-  const { toast } = useToast();
+  const { toast } = useToast()
   const handleLogout = () => {
-    toast({ description: 'Logging Out...' });
-  };
+    toast({ description: 'Logging Out...' })
+  }
   return (
     <SignOutButton>
-      <Link href='/' className='w-full text-left' onClick={handleLogout}>
+      <Link href="/" className="w-full text-left" onClick={handleLogout}>
         Logout
       </Link>
     </SignOutButton>
-  );
+  )
 }
-export default SignOutLink;
+export default SignOutLink
 ```
 
 ### UserIcon Component
 
 ```tsx
-import { LuUser2 } from 'react-icons/lu';
-import { currentUser } from '@clerk/nextjs/server';
+import { LuUser2 } from 'react-icons/lu'
+import { currentUser } from '@clerk/nextjs/server'
 async function UserIcon() {
-  const user = await currentUser();
-  const profileImage = user?.imageUrl;
+  const user = await currentUser()
+  const profileImage = user?.imageUrl
   if (profileImage)
     return (
-      <img src={profileImage} className='w-6 h-6 rounded-full object-cover' />
-    );
-  return <LuUser2 className='w-6 h-6 bg-primary rounded-full text-white' />;
+      <img src={profileImage} className="w-6 h-6 rounded-full object-cover" />
+    )
+  return <LuUser2 className="w-6 h-6 bg-primary rounded-full text-white" />
 }
-export default UserIcon;
+export default UserIcon
 ```
 
 ### LinksDropdown - Complete
@@ -1689,35 +1689,35 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { LuAlignLeft } from 'react-icons/lu';
-import Link from 'next/link';
-import { Button } from '../ui/button';
-import { links } from '@/utils/links';
-import UserIcon from './UserIcon';
-import SignOutLink from './SignOutLink';
-import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs';
+} from '@/components/ui/dropdown-menu'
+import { LuAlignLeft } from 'react-icons/lu'
+import Link from 'next/link'
+import { Button } from '../ui/button'
+import { links } from '@/utils/links'
+import UserIcon from './UserIcon'
+import SignOutLink from './SignOutLink'
+import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs'
 
 function LinksDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline' className='flex gap-4 max-w-[100px]'>
-          <LuAlignLeft className='w-6 h-6' />
+        <Button variant="outline" className="flex gap-4 max-w-[100px]">
+          <LuAlignLeft className="w-6 h-6" />
           <UserIcon />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='w-48' align='start' sideOffset={10}>
+      <DropdownMenuContent className="w-48" align="start" sideOffset={10}>
         <SignedOut>
           <DropdownMenuItem>
-            <SignInButton mode='modal'>
-              <button className='w-full text-left'>Login</button>
+            <SignInButton mode="modal">
+              <button className="w-full text-left">Login</button>
             </SignInButton>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <SignUpButton mode='modal'>
-              <button className='w-full text-left'>Register</button>
+            <SignUpButton mode="modal">
+              <button className="w-full text-left">Register</button>
             </SignUpButton>
           </DropdownMenuItem>
         </SignedOut>
@@ -1725,11 +1725,11 @@ function LinksDropdown() {
           {links.map((link) => {
             return (
               <DropdownMenuItem key={link.href}>
-                <Link href={link.href} className='capitalize w-full'>
+                <Link href={link.href} className="capitalize w-full">
                   {link.label}
                 </Link>
               </DropdownMenuItem>
-            );
+            )
           })}
           <DropdownMenuSeparator />
           <DropdownMenuItem>
@@ -1738,9 +1738,9 @@ function LinksDropdown() {
         </SignedIn>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }
-export default LinksDropdown;
+export default LinksDropdown
 ```
 
 ### Admin Links
@@ -1749,9 +1749,9 @@ export default LinksDropdown;
 
 ```ts
 type NavLink = {
-  href: string;
-  label: string;
-};
+  href: string
+  label: string
+}
 
 export const links: NavLink[] = [
   { href: '/', label: 'home' },
@@ -1761,13 +1761,13 @@ export const links: NavLink[] = [
   { href: '/cart', label: 'cart' },
   { href: '/orders', label: 'orders' },
   { href: '/admin/sales', label: 'dashboard' },
-];
+]
 
 export const adminLinks: NavLink[] = [
   { href: '/admin/sales', label: 'sales' },
   { href: '/admin/products', label: 'my products' },
   { href: '/admin/products/create', label: 'create product' },
-];
+]
 ```
 
 ### Admin Pages
@@ -1786,84 +1786,84 @@ export const adminLinks: NavLink[] = [
 Sidebar.tsx
 
 ```tsx
-'use client';
-import { adminLinks } from '@/utils/links';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Button } from '@/components/ui/button';
+'use client'
+import { adminLinks } from '@/utils/links'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Button } from '@/components/ui/button'
 
 function Sidebar() {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <aside>
       {adminLinks.map((link) => {
-        const isActivePage = pathname === link.href;
-        const variant = isActivePage ? 'default' : 'ghost';
+        const isActivePage = pathname === link.href
+        const variant = isActivePage ? 'default' : 'ghost'
         return (
           <Button
             asChild
-            className='w-full mb-2 capitalize font-normal justify-start'
+            className="w-full mb-2 capitalize font-normal justify-start"
             variant={variant}
           >
             <Link key={link.href} href={link.href}>
               {link.label}
             </Link>
           </Button>
-        );
+        )
       })}
     </aside>
-  );
+  )
 }
-export default Sidebar;
+export default Sidebar
 ```
 
 layout.tsx
 
 ```tsx
-import { Separator } from '@/components/ui/separator';
-import Sidebar from './Sidebar';
+import { Separator } from '@/components/ui/separator'
+import Sidebar from './Sidebar'
 
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <h2 className='text-2xl pl-4'>Dashboard</h2>
-      <Separator className='mt-2' />
-      <section className='grid lg:grid-cols-12 gap-12 mt-12'>
-        <div className='lg:col-span-2'>
+      <h2 className="text-2xl pl-4">Dashboard</h2>
+      <Separator className="mt-2" />
+      <section className="grid lg:grid-cols-12 gap-12 mt-12">
+        <div className="lg:col-span-2">
           <Sidebar />
         </div>
-        <div className='lg:col-span-10 px-4'>{children}</div>
+        <div className="lg:col-span-10 px-4">{children}</div>
       </section>
     </>
-  );
+  )
 }
-export default DashboardLayout;
+export default DashboardLayout
 ```
 
 ### Restrict Access - Middleware
 
 ```ts
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { NextResponse } from 'next/server'
 
-const isPublicRoute = createRouteMatcher(['/', '/products(.*)', '/about']);
-const isAdminRoute = createRouteMatcher(['/admin(.*)']);
+const isPublicRoute = createRouteMatcher(['/', '/products(.*)', '/about'])
+const isAdminRoute = createRouteMatcher(['/admin(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
   // console.log(auth().userId);
 
-  const isAdminUser = auth().userId === process.env.ADMIN_USER_ID;
+  const isAdminUser = auth().userId === process.env.ADMIN_USER_ID
 
   if (isAdminRoute(req) && !isAdminUser) {
-    return NextResponse.redirect(new URL('/', req.url));
+    return NextResponse.redirect(new URL('/', req.url))
   }
-  if (!isPublicRoute(req)) auth().protect();
-});
+  if (!isPublicRoute(req)) auth().protect()
+})
 
 export const config = {
   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
-};
+}
 ```
 
 - add userId to .env
@@ -1875,59 +1875,59 @@ ADMIN_USER_ID=
 ### Restrict Access - LinksDropdown
 
 ```tsx
-import { auth } from '@clerk/nextjs/server';
+import { auth } from '@clerk/nextjs/server'
 function LinksDropdown() {
-  const { userId } = auth();
-  const isAdmin = userId === process.env.ADMIN_USER_ID;
+  const { userId } = auth()
+  const isAdmin = userId === process.env.ADMIN_USER_ID
   return (
     <>
       {links.map((link) => {
-        if (link.label === 'dashboard' && !isAdmin) return null;
+        if (link.label === 'dashboard' && !isAdmin) return null
         return (
           <DropdownMenuItem key={link.href}>
-            <Link href={link.href} className='capitalize w-full'>
+            <Link href={link.href} className="capitalize w-full">
               {link.label}
             </Link>
           </DropdownMenuItem>
-        );
+        )
       })}
     </>
-  );
+  )
 }
 ```
 
 ### Create Product - Setup
 
 ```tsx
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
 const createProductAction = async (formData: FormData) => {
-  'use server';
-  const name = formData.get('name') as string;
-  console.log(name);
-};
+  'use server'
+  const name = formData.get('name') as string
+  console.log(name)
+}
 
 function CreateProductPage() {
   return (
     <section>
-      <h1 className='text-2xl font-semibold mb-8 capitalize'>create product</h1>
-      <div className='border p-8 rounded-md'>
+      <h1 className="text-2xl font-semibold mb-8 capitalize">create product</h1>
+      <div className="border p-8 rounded-md">
         <form action={createProductAction}>
-          <div className='mb-2'>
-            <Label htmlFor='name'>Product Name</Label>
-            <Input id='name' name='name' type='text' />
+          <div className="mb-2">
+            <Label htmlFor="name">Product Name</Label>
+            <Input id="name" name="name" type="text" />
           </div>
-          <Button type='submit' size='lg'>
+          <Button type="submit" size="lg">
             Submit
           </Button>
         </form>
       </div>
     </section>
-  );
+  )
 }
-export default CreateProductPage;
+export default CreateProductPage
 ```
 
 ### Faker Library
@@ -1939,16 +1939,16 @@ npm install @faker-js/faker --save-dev
 [Docs](https://fakerjs.dev/guide/)
 
 ```tsx
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker'
 
 function CreateProductPage() {
-  const name = faker.commerce.productName();
-  const company = faker.company.name();
-  const description = faker.lorem.paragraph({ min: 10, max: 12 });
+  const name = faker.commerce.productName()
+  const company = faker.company.name()
+  const description = faker.lorem.paragraph({ min: 10, max: 12 })
 
-  return <Input id='name' name='name' type='text' defaultValue={name} />;
+  return <Input id="name" name="name" type="text" defaultValue={name} />
 }
-export default CreateProductPage;
+export default CreateProductPage
 ```
 
 ### Form Components - Setup
@@ -1966,16 +1966,16 @@ export default CreateProductPage;
 FormInput.tsx
 
 ```tsx
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
+import { Label } from '../ui/label'
+import { Input } from '../ui/input'
 
 type FormInputProps = {
-  name: string;
-  type: string;
-  label?: string;
-  defaultValue?: string;
-  placeholder?: string;
-};
+  name: string
+  type: string
+  label?: string
+  defaultValue?: string
+  placeholder?: string
+}
 
 function FormInput({
   label,
@@ -1985,8 +1985,8 @@ function FormInput({
   placeholder,
 }: FormInputProps) {
   return (
-    <div className='mb-2'>
-      <Label htmlFor={name} className='capitalize'>
+    <div className="mb-2">
+      <Label htmlFor={name} className="capitalize">
         {label || name}
       </Label>
       <Input
@@ -1998,79 +1998,79 @@ function FormInput({
         required
       />
     </div>
-  );
+  )
 }
 
-export default FormInput;
+export default FormInput
 ```
 
 ### PriceInput Component
 
 ```tsx
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
+import { Label } from '../ui/label'
+import { Input } from '../ui/input'
 
-const name = 'price';
+const name = 'price'
 type FormInputNumberProps = {
-  defaultValue?: number;
-};
+  defaultValue?: number
+}
 
 function PriceInput({ defaultValue }: FormInputNumberProps) {
   return (
-    <div className='mb-2'>
-      <Label htmlFor='price' className='capitalize'>
+    <div className="mb-2">
+      <Label htmlFor="price" className="capitalize">
         Price ($)
       </Label>
       <Input
         id={name}
-        type='number'
+        type="number"
         name={name}
         min={0}
         defaultValue={defaultValue || 100}
         required
       />
     </div>
-  );
+  )
 }
-export default PriceInput;
+export default PriceInput
 ```
 
 ### ImageInput Component
 
 ```tsx
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
+import { Label } from '../ui/label'
+import { Input } from '../ui/input'
 
 function ImageInput() {
-  const name = 'image';
+  const name = 'image'
   return (
-    <div className='mb-2'>
-      <Label htmlFor={name} className='capitalize'>
+    <div className="mb-2">
+      <Label htmlFor={name} className="capitalize">
         Image
       </Label>
-      <Input id={name} name={name} type='file' required accept='image/*' />
+      <Input id={name} name={name} type="file" required accept="image/*" />
     </div>
-  );
+  )
 }
-export default ImageInput;
+export default ImageInput
 ```
 
 ### TextAreaInput Component
 
 ```tsx
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 
 type TextAreaInputProps = {
-  name: string;
-  labelText?: string;
-  defaultValue?: string;
-};
+  name: string
+  labelText?: string
+  defaultValue?: string
+}
 
 function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
   return (
-    <div className='mb-2'>
-      <Label htmlFor={name} className='capitalize'>
+    <div className="mb-2">
+      <Label htmlFor={name} className="capitalize">
         {labelText || name}
       </Label>
       <Textarea
@@ -2079,27 +2079,27 @@ function TextAreaInput({ name, labelText, defaultValue }: TextAreaInputProps) {
         defaultValue={defaultValue}
         rows={5}
         required
-        className='leading-loose'
+        className="leading-loose"
       />
     </div>
-  );
+  )
 }
 
-export default TextAreaInput;
+export default TextAreaInput
 ```
 
 ### CheckBoxInput Component
 
 ```tsx
-'use client';
+'use client'
 
-import { Checkbox } from '@/components/ui/checkbox';
+import { Checkbox } from '@/components/ui/checkbox'
 
 type CheckboxInputProps = {
-  name: string;
-  label: string;
-  defaultChecked?: boolean;
-};
+  name: string
+  label: string
+  defaultChecked?: boolean
+}
 
 export default function CheckboxInput({
   name,
@@ -2107,16 +2107,16 @@ export default function CheckboxInput({
   defaultChecked = false,
 }: CheckboxInputProps) {
   return (
-    <div className='flex items-center space-x-2'>
+    <div className="flex items-center space-x-2">
       <Checkbox id={name} name={name} defaultChecked={defaultChecked} />
       <label
         htmlFor={name}
-        className='text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize'
+        className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize"
       >
         {label}
       </label>
     </div>
-  );
+  )
 }
 ```
 
@@ -2125,48 +2125,48 @@ export default function CheckboxInput({
 components/form/Buttons.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import { ReloadIcon } from '@radix-ui/react-icons';
-import { useFormStatus } from 'react-dom';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { SignInButton } from '@clerk/nextjs';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { LuTrash2, LuPenSquare } from 'react-icons/lu';
+import { ReloadIcon } from '@radix-ui/react-icons'
+import { useFormStatus } from 'react-dom'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { SignInButton } from '@clerk/nextjs'
+import { FaRegHeart, FaHeart } from 'react-icons/fa'
+import { LuTrash2, LuPenSquare } from 'react-icons/lu'
 
-type btnSize = 'default' | 'lg' | 'sm';
+type btnSize = 'default' | 'lg' | 'sm'
 
 type SubmitButtonProps = {
-  className?: string;
-  text?: string;
-  size?: btnSize;
-};
+  className?: string
+  text?: string
+  size?: btnSize
+}
 
 export function SubmitButton({
   className = '',
   text = 'submit',
   size = 'lg',
 }: SubmitButtonProps) {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
 
   return (
     <Button
-      type='submit'
+      type="submit"
       disabled={pending}
       className={cn('capitalize', className)}
       size={size}
     >
       {pending ? (
         <>
-          <ReloadIcon className='mr-2 h-4 w-4 animate-spin' />
+          <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
           Please wait...
         </>
       ) : (
         text
       )}
     </Button>
-  );
+  )
 }
 ```
 
@@ -2178,58 +2178,58 @@ export function SubmitButton({
 export type actionFunction = (
   prevState: any,
   formData: FormData
-) => Promise<{ message: string }>;
+) => Promise<{ message: string }>
 
 export type CartItem = {
-  productId: string;
-  image: string;
-  title: string;
-  price: string;
-  amount: number;
-  company: string;
-};
+  productId: string
+  image: string
+  title: string
+  price: string
+  amount: number
+  company: string
+}
 
 export type CartState = {
-  cartItems: CartItem[];
-  numItemsInCart: number;
-  cartTotal: number;
-  shipping: number;
-  tax: number;
-  orderTotal: number;
-};
+  cartItems: CartItem[]
+  numItemsInCart: number
+  cartTotal: number
+  shipping: number
+  tax: number
+  orderTotal: number
+}
 ```
 
 FormContainer.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import { useFormState } from 'react-dom';
-import { useEffect } from 'react';
-import { useToast } from '@/components/ui/use-toast';
-import { actionFunction } from '@/utils/types';
+import { useFormState } from 'react-dom'
+import { useEffect } from 'react'
+import { useToast } from '@/components/ui/use-toast'
+import { actionFunction } from '@/utils/types'
 
 const initialState = {
   message: '',
-};
+}
 
 function FormContainer({
   action,
   children,
 }: {
-  action: actionFunction;
-  children: React.ReactNode;
+  action: actionFunction
+  children: React.ReactNode
 }) {
-  const [state, formAction] = useFormState(action, initialState);
-  const { toast } = useToast();
+  const [state, formAction] = useFormState(action, initialState)
+  const { toast } = useToast()
   useEffect(() => {
     if (state.message) {
-      toast({ description: state.message });
+      toast({ description: state.message })
     }
-  }, [state]);
-  return <form action={formAction}>{children}</form>;
+  }, [state])
+  return <form action={formAction}>{children}</form>
 }
-export default FormContainer;
+export default FormContainer
 ```
 
 ### Create Product Page - Complete
@@ -2237,72 +2237,72 @@ export default FormContainer;
 - actions.ts
 
 ```ts
-'use server';
+'use server'
 
 export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  return { message: 'product created' };
-};
+  return { message: 'product created' }
+}
 ```
 
 page.tsx
 
 ```tsx
-import FormInput from '@/components/form/FormInput';
-import { SubmitButton } from '@/components/form/Buttons';
-import FormContainer from '@/components/form/FormContainer';
-import { createProductAction } from '@/utils/actions';
-import ImageInput from '@/components/form/ImageInput';
-import PriceInput from '@/components/form/PriceInput';
-import TextAreaInput from '@/components/form/TextAreaInput';
-import { faker } from '@faker-js/faker';
-import CheckboxInput from '@/components/form/CheckboxInput';
+import FormInput from '@/components/form/FormInput'
+import { SubmitButton } from '@/components/form/Buttons'
+import FormContainer from '@/components/form/FormContainer'
+import { createProductAction } from '@/utils/actions'
+import ImageInput from '@/components/form/ImageInput'
+import PriceInput from '@/components/form/PriceInput'
+import TextAreaInput from '@/components/form/TextAreaInput'
+import { faker } from '@faker-js/faker'
+import CheckboxInput from '@/components/form/CheckboxInput'
 
 function CreateProduct() {
-  const name = faker.commerce.productName();
-  const company = faker.company.name();
+  const name = faker.commerce.productName()
+  const company = faker.company.name()
   // const description = faker.commerce.productDescription();
-  const description = faker.lorem.paragraph({ min: 10, max: 12 });
+  const description = faker.lorem.paragraph({ min: 10, max: 12 })
 
   return (
     <section>
-      <h1 className='text-2xl font-semibold mb-8 capitalize'>create product</h1>
-      <div className='border p-8 rounded-md'>
+      <h1 className="text-2xl font-semibold mb-8 capitalize">create product</h1>
+      <div className="border p-8 rounded-md">
         <FormContainer action={createProductAction}>
-          <div className='grid gap-4 md:grid-cols-2 my-4'>
+          <div className="grid gap-4 md:grid-cols-2 my-4">
             <FormInput
-              type='text'
-              name='name'
-              label='product name'
+              type="text"
+              name="name"
+              label="product name"
               defaultValue={name}
             />
             <FormInput
-              type='text'
-              name='company'
-              label='company'
+              type="text"
+              name="company"
+              label="company"
               defaultValue={company}
             />
             <PriceInput />
             <ImageInput />
           </div>
           <TextAreaInput
-            name='description'
-            labelText='product description'
+            name="description"
+            labelText="product description"
             defaultValue={description}
           />
-          <div className='mt-6'>
-            <CheckboxInput name='featured' label='featured' />
+          <div className="mt-6">
+            <CheckboxInput name="featured" label="featured" />
           </div>
 
-          <SubmitButton text='Create Product' className='mt-8' />
+          <SubmitButton text="Create Product" className="mt-8" />
         </FormContainer>
       </div>
     </section>
-  );
+  )
 }
-export default CreateProduct;
+export default CreateProduct
 ```
 
 ### Helper Functions
@@ -2310,22 +2310,22 @@ export default CreateProduct;
 - actions.ts
 
 ```ts
-import { auth, currentUser } from '@clerk/nextjs/server';
+import { auth, currentUser } from '@clerk/nextjs/server'
 
 const renderError = (error: unknown): { message: string } => {
-  console.log(error);
+  console.log(error)
   return {
     message: error instanceof Error ? error.message : 'An error occurred',
-  };
-};
+  }
+}
 
 const getAuthUser = async () => {
-  const user = await currentUser();
+  const user = await currentUser()
   if (!user) {
-    throw new Error('You must be logged in to access this route');
+    throw new Error('You must be logged in to access this route')
   }
-  return user;
-};
+  return user
+}
 ```
 
 ### CreateProductAction - First Approach
@@ -2337,15 +2337,15 @@ export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
 
   try {
-    const name = formData.get('name') as string;
-    const company = formData.get('company') as string;
-    const price = Number(formData.get('price') as string);
-    const image = formData.get('image') as File;
-    const description = formData.get('description') as string;
-    const featured = Boolean(formData.get('featured') as string);
+    const name = formData.get('name') as string
+    const company = formData.get('company') as string
+    const price = Number(formData.get('price') as string)
+    const image = formData.get('image') as File
+    const description = formData.get('description') as string
+    const featured = Boolean(formData.get('featured') as string)
 
     await db.product.create({
       data: {
@@ -2357,12 +2357,12 @@ export const createProductAction = async (
         featured,
         clerkId: user.id,
       },
-    });
-    return { message: 'product created' };
+    })
+    return { message: 'product created' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### Problems
@@ -2383,7 +2383,7 @@ npm install zod
 - setup utils/schemas.ts
 
 ```ts
-import { z, ZodSchema } from 'zod';
+import { z, ZodSchema } from 'zod'
 
 export const productSchema = z.object({
   name: z.string().min(4),
@@ -2391,7 +2391,7 @@ export const productSchema = z.object({
   price: z.coerce.number().int().min(0),
   description: z.string(),
   featured: z.coerce.boolean(),
-});
+})
 ```
 
 - actions.ts
@@ -2401,11 +2401,11 @@ export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
 
   try {
-    const rawData = Object.fromEntries(formData);
-    const validatedFields = productSchema.parse(rawData);
+    const rawData = Object.fromEntries(formData)
+    const validatedFields = productSchema.parse(rawData)
 
     await db.product.create({
       data: {
@@ -2413,12 +2413,12 @@ export const createProductAction = async (
         image: '/images/product-1.jpg',
         clerkId: user.id,
       },
-    });
-    return { message: 'product created' };
+    })
+    return { message: 'product created' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### Problem
@@ -2428,7 +2428,7 @@ export const createProductAction = async (
 schemas.ts
 
 ```ts
-import { z, ZodSchema } from 'zod';
+import { z, ZodSchema } from 'zod'
 
 export const productSchema = z.object({
   name: z
@@ -2446,14 +2446,14 @@ export const productSchema = z.object({
   }),
   description: z.string().refine(
     (description) => {
-      const wordCount = description.split(' ').length;
-      return wordCount >= 10 && wordCount <= 1000;
+      const wordCount = description.split(' ').length
+      return wordCount >= 10 && wordCount <= 1000
     },
     {
       message: 'description must be between 10 and 1000 words.',
     }
   ),
-});
+})
 ```
 
 ```ts
@@ -2486,12 +2486,12 @@ export function validateWithZodSchema<T>(
   schema: ZodSchema<T>,
   data: unknown
 ): T {
-  const result = schema.safeParse(data);
+  const result = schema.safeParse(data)
   if (!result.success) {
-    const errors = result.error.errors.map((error) => error.message);
-    throw new Error(errors.join(', '));
+    const errors = result.error.errors.map((error) => error.message)
+    throw new Error(errors.join(', '))
   }
-  return result.data;
+  return result.data
 }
 ```
 
@@ -2520,21 +2520,21 @@ schemas.ts
 ```ts
 export const imageSchema = z.object({
   image: validateImageFile(),
-});
+})
 
 function validateImageFile() {
-  const maxUploadSize = 1024 * 1024;
-  const acceptedFileTypes = ['image/'];
+  const maxUploadSize = 1024 * 1024
+  const acceptedFileTypes = ['image/']
   return z
     .instanceof(File)
     .refine((file) => {
-      return !file || file.size <= maxUploadSize;
+      return !file || file.size <= maxUploadSize
     }, `File size must be less than 1 MB`)
     .refine((file) => {
       return (
         !file || acceptedFileTypes.some((type) => file.type.startsWith(type))
-      );
-    }, 'File must be an image');
+      )
+    }, 'File must be an image')
 }
 ```
 
@@ -2575,29 +2575,29 @@ npm install @supabase/supabase-js
 utils/supabase.ts
 
 ```ts
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js'
 
-const bucket = 'your-bucket-name';
+const bucket = 'your-bucket-name'
 
 // Create a single supabase client for interacting with your database
 export const supabase = createClient(
   process.env.SUPABASE_URL as string,
   process.env.SUPABASE_KEY as string
-);
+)
 
 export const uploadImage = async (image: File) => {
-  const timestamp = Date.now();
+  const timestamp = Date.now()
   // const newName = `/users/${timestamp}-${image.name}`;
-  const newName = `${timestamp}-${image.name}`;
+  const newName = `${timestamp}-${image.name}`
 
   const { data, error } = await supabase.storage
     .from(bucket)
     .upload(newName, image, {
       cacheControl: '3600',
-    });
-  if (!data) throw new Error('Image upload failed');
-  return supabase.storage.from(bucket).getPublicUrl(newName).data.publicUrl;
-};
+    })
+  if (!data) throw new Error('Image upload failed')
+  return supabase.storage.from(bucket).getPublicUrl(newName).data.publicUrl
+}
 ```
 
 ### Create Product Action - Complete
@@ -2609,14 +2609,14 @@ export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
 
   try {
-    const rawData = Object.fromEntries(formData);
-    const file = formData.get('image') as File;
-    const validatedFields = validateWithZodSchema(productSchema, rawData);
-    const validatedFile = validateWithZodSchema(imageSchema, { image: file });
-    const fullPath = await uploadImage(validatedFile.image);
+    const rawData = Object.fromEntries(formData)
+    const file = formData.get('image') as File
+    const validatedFields = validateWithZodSchema(productSchema, rawData)
+    const validatedFile = validateWithZodSchema(imageSchema, { image: file })
+    const fullPath = await uploadImage(validatedFile.image)
 
     await db.product.create({
       data: {
@@ -2624,12 +2624,12 @@ export const createProductAction = async (
         image: fullPath,
         clerkId: user.id,
       },
-    });
+    })
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-  redirect('/admin/products');
-};
+  redirect('/admin/products')
+}
 ```
 
 - add supabase url to remote patterns
@@ -2651,9 +2651,9 @@ const nextConfig = {
       },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
 ```
 
 ### Fetch Products - Admin
@@ -2662,21 +2662,21 @@ export default nextConfig;
 
 ```ts
 const getAdminUser = async () => {
-  const user = await getAuthUser();
-  if (user.id !== process.env.ADMIN_USER_ID) redirect('/');
-  return user;
-};
+  const user = await getAuthUser()
+  if (user.id !== process.env.ADMIN_USER_ID) redirect('/')
+  return user
+}
 // refactor createProductAction
 
 export const fetchAdminProducts = async () => {
-  await getAdminUser();
+  await getAdminUser()
   const products = await db.product.findMany({
     orderBy: {
       createdAt: 'desc',
     },
-  });
-  return products;
-};
+  })
+  return products
+}
 ```
 
 ### Admin Products Page
@@ -2684,11 +2684,11 @@ export const fetchAdminProducts = async () => {
 - app/admin/products/page.tsx
 
 ```tsx
-import EmptyList from '@/components/global/EmptyList';
-import { fetchAdminProducts } from '@/utils/actions';
-import Link from 'next/link';
+import EmptyList from '@/components/global/EmptyList'
+import { fetchAdminProducts } from '@/utils/actions'
+import Link from 'next/link'
 
-import { formatCurrency } from '@/utils/format';
+import { formatCurrency } from '@/utils/format'
 import {
   Table,
   TableBody,
@@ -2697,15 +2697,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/components/ui/table'
 
 async function ItemsPage() {
-  const items = await fetchAdminProducts();
-  if (items.length === 0) return <EmptyList />;
+  const items = await fetchAdminProducts()
+  if (items.length === 0) return <EmptyList />
   return (
     <section>
       <Table>
-        <TableCaption className='capitalize'>
+        <TableCaption className="capitalize">
           total products : {items.length}
         </TableCaption>
         <TableHeader>
@@ -2718,13 +2718,13 @@ async function ItemsPage() {
         </TableHeader>
         <TableBody>
           {items.map((item) => {
-            const { id: productId, name, company, price } = item;
+            const { id: productId, name, company, price } = item
             return (
               <TableRow key={productId}>
                 <TableCell>
                   <Link
                     href={`/products/${productId}`}
-                    className='underline text-muted-foreground tracking-wide capitalize'
+                    className="underline text-muted-foreground tracking-wide capitalize"
                   >
                     {name}
                   </Link>
@@ -2732,49 +2732,49 @@ async function ItemsPage() {
                 <TableCell>{company}</TableCell>
                 <TableCell>{formatCurrency(price)}</TableCell>
 
-                <TableCell className='flex items-center gap-x-2'></TableCell>
+                <TableCell className="flex items-center gap-x-2"></TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </section>
-  );
+  )
 }
 
-export default ItemsPage;
+export default ItemsPage
 ```
 
 ### Icon Button
 
 ```tsx
-type actionType = 'edit' | 'delete';
+type actionType = 'edit' | 'delete'
 export const IconButton = ({ actionType }: { actionType: actionType }) => {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
 
   const renderIcon = () => {
     switch (actionType) {
       case 'edit':
-        return <LuPenSquare />;
+        return <LuPenSquare />
       case 'delete':
-        return <LuTrash2 />;
+        return <LuTrash2 />
       default:
-        const never: never = actionType;
-        throw new Error(`Invalid action type: ${never}`);
+        const never: never = actionType
+        throw new Error(`Invalid action type: ${never}`)
     }
-  };
+  }
 
   return (
     <Button
-      type='submit'
-      size='icon'
-      variant='link'
-      className='p-2 cursor-pointer'
+      type="submit"
+      size="icon"
+      variant="link"
+      className="p-2 cursor-pointer"
     >
-      {pending ? <ReloadIcon className=' animate-spin' /> : renderIcon()}
+      {pending ? <ReloadIcon className=" animate-spin" /> : renderIcon()}
     </Button>
-  );
-};
+  )
+}
 ```
 
 ### Delete Product Action
@@ -2782,52 +2782,52 @@ export const IconButton = ({ actionType }: { actionType: actionType }) => {
 - actions.ts
 
 ```ts
-import { revalidatePath } from 'next/cache';
+import { revalidatePath } from 'next/cache'
 
 export const deleteProductAction = async (prevState: { productId: string }) => {
-  const { productId } = prevState;
-  await getAdminUser();
+  const { productId } = prevState
+  await getAdminUser()
 
   try {
     await db.product.delete({
       where: {
         id: productId,
       },
-    });
+    })
 
-    revalidatePath('/admin/products');
-    return { message: 'product removed' };
+    revalidatePath('/admin/products')
+    return { message: 'product removed' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### Admin Products Page - Complete
 
 ```tsx
-import FormContainer from '@/components/form/FormContainer';
-import { IconButton } from '@/components/form/Buttons';
-import { deleteProductAction } from '@/utils/actions';
+import FormContainer from '@/components/form/FormContainer'
+import { IconButton } from '@/components/form/Buttons'
+import { deleteProductAction } from '@/utils/actions'
 
 return (
   <>
-    <TableCell className='flex items-center gap-x-2'>
+    <TableCell className="flex items-center gap-x-2">
       <Link href={`/admin/products/${productId}/edit`}>
-        <IconButton actionType='edit'></IconButton>
+        <IconButton actionType="edit"></IconButton>
       </Link>
       <DeleteProduct productId={productId} />
     </TableCell>
   </>
-);
+)
 
 function DeleteProduct({ productId }: { productId: string }) {
-  const deleteProduct = deleteProductAction.bind(null, { productId });
+  const deleteProduct = deleteProductAction.bind(null, { productId })
   return (
     <FormContainer action={deleteProduct}>
-      <IconButton actionType='delete' />
+      <IconButton actionType="delete" />
     </FormContainer>
-  );
+  )
 }
 ```
 
@@ -2837,29 +2837,29 @@ function DeleteProduct({ productId }: { productId: string }) {
 
 ```ts
 export const deleteImage = (url: string) => {
-  const imageName = url.split('/').pop();
-  if (!imageName) throw new Error('Invalid URL');
-  return supabase.storage.from(bucket).remove([imageName]);
-};
+  const imageName = url.split('/').pop()
+  if (!imageName) throw new Error('Invalid URL')
+  return supabase.storage.from(bucket).remove([imageName])
+}
 ```
 
 ```ts
 export const deleteProductAction = async (prevState: { productId: string }) => {
-  const { productId } = prevState;
-  await getAdminUser();
+  const { productId } = prevState
+  await getAdminUser()
   try {
     const product = await db.product.delete({
       where: {
         id: productId,
       },
-    });
-    await deleteImage(product.image);
-    revalidatePath('/admin/products');
-    return { message: 'product removed' };
+    })
+    await deleteImage(product.image)
+    revalidatePath('/admin/products')
+    return { message: 'product removed' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### FetchAdminProductDetails, UpdateProductAction and updateProductImageAction
@@ -2868,28 +2868,28 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
 
 ```ts
 export const fetchAdminProductDetails = async (productId: string) => {
-  await getAdminUser();
+  await getAdminUser()
   const product = await db.product.findUnique({
     where: {
       id: productId,
     },
-  });
-  if (!product) redirect('/admin/products');
-  return product;
-};
+  })
+  if (!product) redirect('/admin/products')
+  return product
+}
 
 export const updateProductAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  return { message: 'Product updated successfully' };
-};
+  return { message: 'Product updated successfully' }
+}
 export const updateProductImageAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  return { message: 'Product Image updated successfully' };
-};
+  return { message: 'Product Image updated successfully' }
+}
 ```
 
 ### Edit Product Page
@@ -2897,59 +2897,59 @@ export const updateProductImageAction = async (
 - app/admin/products/[id]/edit/page.tsx
 
 ```tsx
-import { fetchAdminProductDetails, updateProductAction } from '@/utils/actions';
-import FormContainer from '@/components/form/FormContainer';
-import FormInput from '@/components/form/FormInput';
-import PriceInput from '@/components/form/PriceInput';
-import TextAreaInput from '@/components/form/TextAreaInput';
-import { SubmitButton } from '@/components/form/Buttons';
-import CheckboxInput from '@/components/form/CheckboxInput';
+import { fetchAdminProductDetails, updateProductAction } from '@/utils/actions'
+import FormContainer from '@/components/form/FormContainer'
+import FormInput from '@/components/form/FormInput'
+import PriceInput from '@/components/form/PriceInput'
+import TextAreaInput from '@/components/form/TextAreaInput'
+import { SubmitButton } from '@/components/form/Buttons'
+import CheckboxInput from '@/components/form/CheckboxInput'
 async function EditProductPage({ params }: { params: { id: string } }) {
-  const { id } = params;
-  const product = await fetchAdminProductDetails(id);
-  const { name, company, description, featured, price } = product;
+  const { id } = params
+  const product = await fetchAdminProductDetails(id)
+  const { name, company, description, featured, price } = product
   return (
     <section>
-      <h1 className='text-2xl font-semibold mb-8 capitalize'>update product</h1>
-      <div className='border p-8 rounded-md'>
+      <h1 className="text-2xl font-semibold mb-8 capitalize">update product</h1>
+      <div className="border p-8 rounded-md">
         {/* Image Input Container */}
         <FormContainer action={updateProductAction}>
-          <div className='grid gap-4 md:grid-cols-2 my-4'>
-            <input type='hidden' name='id' value={id} />
+          <div className="grid gap-4 md:grid-cols-2 my-4">
+            <input type="hidden" name="id" value={id} />
             <FormInput
-              type='text'
-              name='name'
-              label='product name'
+              type="text"
+              name="name"
+              label="product name"
               defaultValue={name}
             />
             <FormInput
-              type='text'
-              name='company'
-              label='company'
+              type="text"
+              name="company"
+              label="company"
               defaultValue={company}
             />
 
             <PriceInput defaultValue={price} />
           </div>
           <TextAreaInput
-            name='description'
-            labelText='product description'
+            name="description"
+            labelText="product description"
             defaultValue={description}
           />
-          <div className='mt-6'>
+          <div className="mt-6">
             <CheckboxInput
-              name='featured'
-              label='featured'
+              name="featured"
+              label="featured"
               defaultChecked={featured}
             />
           </div>
-          <SubmitButton text='update product' className='mt-8' />
+          <SubmitButton text="update product" className="mt-8" />
         </FormContainer>
       </div>
     </section>
-  );
+  )
 }
-export default EditProductPage;
+export default EditProductPage
 ```
 
 ### UpdateProductAction
@@ -2961,12 +2961,12 @@ export const updateProductAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  await getAdminUser();
+  await getAdminUser()
   try {
-    const productId = formData.get('id') as string;
-    const rawData = Object.fromEntries(formData);
+    const productId = formData.get('id') as string
+    const rawData = Object.fromEntries(formData)
 
-    const validatedFields = validateWithZodSchema(productSchema, rawData);
+    const validatedFields = validateWithZodSchema(productSchema, rawData)
 
     await db.product.update({
       where: {
@@ -2975,88 +2975,88 @@ export const updateProductAction = async (
       data: {
         ...validatedFields,
       },
-    });
-    revalidatePath(`/admin/products/${productId}/edit`);
-    return { message: 'Product updated successfully' };
+    })
+    revalidatePath(`/admin/products/${productId}/edit`)
+    return { message: 'Product updated successfully' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### UpdateImageContainer Component
 
 ```tsx
-'use client';
-import { useState } from 'react';
-import Image from 'next/image';
-import { Button } from '../ui/button';
-import FormContainer from './FormContainer';
-import ImageInput from './ImageInput';
-import { SubmitButton } from './Buttons';
-import { type actionFunction } from '@/utils/types';
+'use client'
+import { useState } from 'react'
+import Image from 'next/image'
+import { Button } from '../ui/button'
+import FormContainer from './FormContainer'
+import ImageInput from './ImageInput'
+import { SubmitButton } from './Buttons'
+import { type actionFunction } from '@/utils/types'
 
 type ImageInputContainerProps = {
-  image: string;
-  name: string;
-  action: actionFunction;
-  text: string;
-  children?: React.ReactNode;
-};
+  image: string
+  name: string
+  action: actionFunction
+  text: string
+  children?: React.ReactNode
+}
 
 function ImageInputContainer(props: ImageInputContainerProps) {
-  const { image, name, action, text } = props;
-  const [isUpdateFormVisible, setUpdateFormVisible] = useState(false);
+  const { image, name, action, text } = props
+  const [isUpdateFormVisible, setUpdateFormVisible] = useState(false)
 
   return (
-    <div className='mb-8'>
+    <div className="mb-8">
       <Image
         src={image}
         width={200}
         height={200}
-        className='rounded-md object-cover mb-4 w-[200px] h-[200px]'
+        className="rounded-md object-cover mb-4 w-[200px] h-[200px]"
         alt={name}
       />
 
       <Button
-        variant='outline'
-        size='sm'
+        variant="outline"
+        size="sm"
         onClick={() => setUpdateFormVisible((prev) => !prev)}
       >
         {text}
       </Button>
       {isUpdateFormVisible && (
-        <div className='max-w-md mt-4'>
+        <div className="max-w-md mt-4">
           <FormContainer action={action}>
             {props.children}
             <ImageInput />
-            <SubmitButton size='sm' />
+            <SubmitButton size="sm" />
           </FormContainer>
         </div>
       )}
     </div>
-  );
+  )
 }
-export default ImageInputContainer;
+export default ImageInputContainer
 ```
 
 EditProductPage.tsx
 
 ```tsx
 return (
-  <div className='border p-8 rounded-md'>
+  <div className="border p-8 rounded-md">
     {/* Image Input Container */}
     <ImageInputContainer
       action={updateProductImageAction}
       name={name}
       image={product.image}
-      text='update image'
+      text="update image"
     >
-      <input type='hidden' name='id' value={id} />
-      <input type='hidden' name='url' value={product.image} />
+      <input type="hidden" name="id" value={id} />
+      <input type="hidden" name="url" value={product.image} />
     </ImageInputContainer>
   </div>
-);
+)
 ```
 
 ### UpdateProductImageAction
@@ -3068,15 +3068,15 @@ export const updateProductImageAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  await getAuthUser();
+  await getAuthUser()
   try {
-    const image = formData.get('image') as File;
-    const productId = formData.get('id') as string;
-    const oldImageUrl = formData.get('url') as string;
+    const image = formData.get('image') as File
+    const productId = formData.get('id') as string
+    const oldImageUrl = formData.get('url') as string
 
-    const validatedFile = validateWithZodSchema(imageSchema, { image });
-    const fullPath = await uploadImage(validatedFile.image);
-    await deleteImage(oldImageUrl);
+    const validatedFile = validateWithZodSchema(imageSchema, { image })
+    const fullPath = await uploadImage(validatedFile.image)
+    await deleteImage(oldImageUrl)
     await db.product.update({
       where: {
         id: productId,
@@ -3084,13 +3084,13 @@ export const updateProductImageAction = async (
       data: {
         image: fullPath,
       },
-    });
-    revalidatePath(`/admin/products/${productId}/edit`);
-    return { message: 'Product Image updated successfully' };
+    })
+    revalidatePath(`/admin/products/${productId}/edit`)
+    return { message: 'Product Image updated successfully' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### LoadingTable
@@ -3098,32 +3098,32 @@ export const updateProductImageAction = async (
 - create components/global/LoadingTable.tsx
 
 ```tsx
-import { Skeleton } from '../ui/skeleton';
+import { Skeleton } from '../ui/skeleton'
 
 function LoadingTable({ rows = 5 }: { rows?: number }) {
   const tableRows = Array.from({ length: rows }, (_, index) => {
     return (
-      <div className='mb-4' key={index}>
-        <Skeleton className='w-full h-8 rounded' />
+      <div className="mb-4" key={index}>
+        <Skeleton className="w-full h-8 rounded" />
       </div>
-    );
-  });
-  return <>{tableRows}</>;
+    )
+  })
+  return <>{tableRows}</>
 }
-export default LoadingTable;
+export default LoadingTable
 ```
 
 - create admin/products/loading.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import LoadingTable from '@/components/global/LoadingTable';
+import LoadingTable from '@/components/global/LoadingTable'
 
 function loading() {
-  return <LoadingTable />;
+  return <LoadingTable />
 }
-export default loading;
+export default loading
 ```
 
 ### Favorite Model
@@ -3156,39 +3156,39 @@ npx prisma db push
 ```tsx
 export const CardSignInButton = () => {
   return (
-    <SignInButton mode='modal'>
+    <SignInButton mode="modal">
       <Button
-        type='button'
-        size='icon'
-        variant='outline'
-        className='p-2 cursor-pointer'
+        type="button"
+        size="icon"
+        variant="outline"
+        className="p-2 cursor-pointer"
         asChild
       >
         <FaRegHeart />
       </Button>
     </SignInButton>
-  );
-};
+  )
+}
 
 export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
   return (
     <Button
-      type='submit'
-      size='icon'
-      variant='outline'
-      className=' p-2 cursor-pointer'
+      type="submit"
+      size="icon"
+      variant="outline"
+      className=" p-2 cursor-pointer"
     >
       {pending ? (
-        <ReloadIcon className=' animate-spin' />
+        <ReloadIcon className=" animate-spin" />
       ) : isFavorite ? (
         <FaHeart />
       ) : (
         <FaRegHeart />
       )}
     </Button>
-  );
-};
+  )
+}
 ```
 
 ### FetchFavoriteId
@@ -3197,7 +3197,7 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
 
 ```ts
 export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
   const favorite = await db.favorite.findFirst({
     where: {
       productId,
@@ -3206,13 +3206,13 @@ export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
     select: {
       id: true,
     },
-  });
-  return favorite?.id || null;
-};
+  })
+  return favorite?.id || null
+}
 
 export const toggleFavoriteAction = async () => {
-  return { message: 'toggle favorite action' };
-};
+  return { message: 'toggle favorite action' }
+}
 ```
 
 ### FavoriteToggleButton
@@ -3220,52 +3220,52 @@ export const toggleFavoriteAction = async () => {
 - components/products/FavoriteToggleButton.tsx
 
 ```tsx
-import { auth } from '@clerk/nextjs/server';
-import { CardSignInButton } from '../form/Buttons';
-import { fetchFavoriteId } from '@/utils/actions';
-import FavoriteToggleForm from './FavoriteToggleForm';
+import { auth } from '@clerk/nextjs/server'
+import { CardSignInButton } from '../form/Buttons'
+import { fetchFavoriteId } from '@/utils/actions'
+import FavoriteToggleForm from './FavoriteToggleForm'
 async function FavoriteToggleButton({ productId }: { productId: string }) {
-  const { userId } = auth();
-  if (!userId) return <CardSignInButton />;
-  const favoriteId = await fetchFavoriteId({ productId });
+  const { userId } = auth()
+  if (!userId) return <CardSignInButton />
+  const favoriteId = await fetchFavoriteId({ productId })
 
-  return <FavoriteToggleForm favoriteId={favoriteId} productId={productId} />;
+  return <FavoriteToggleForm favoriteId={favoriteId} productId={productId} />
 }
-export default FavoriteToggleButton;
+export default FavoriteToggleButton
 ```
 
 ### FavoriteToggleForm
 
 ```tsx
-'use client';
+'use client'
 
-import { usePathname } from 'next/navigation';
-import FormContainer from '../form/FormContainer';
-import { toggleFavoriteAction } from '@/utils/actions';
-import { CardSubmitButton } from '../form/Buttons';
+import { usePathname } from 'next/navigation'
+import FormContainer from '../form/FormContainer'
+import { toggleFavoriteAction } from '@/utils/actions'
+import { CardSubmitButton } from '../form/Buttons'
 
 type FavoriteToggleFormProps = {
-  productId: string;
-  favoriteId: string | null;
-};
+  productId: string
+  favoriteId: string | null
+}
 
 function FavoriteToggleForm({
   productId,
   favoriteId,
 }: FavoriteToggleFormProps) {
-  const pathname = usePathname();
+  const pathname = usePathname()
   const toggleAction = toggleFavoriteAction.bind(null, {
     productId,
     favoriteId,
     pathname,
-  });
+  })
   return (
     <FormContainer action={toggleAction}>
       <CardSubmitButton isFavorite={favoriteId ? true : false} />
     </FormContainer>
-  );
+  )
 }
-export default FavoriteToggleForm;
+export default FavoriteToggleForm
 ```
 
 ### FavoriteToggleForm
@@ -3274,33 +3274,33 @@ export default FavoriteToggleForm;
 
 ```ts
 export const toggleFavoriteAction = async (prevState: {
-  productId: string;
-  favoriteId: string | null;
-  pathname: string;
+  productId: string
+  favoriteId: string | null
+  pathname: string
 }) => {
-  const user = await getAuthUser();
-  const { productId, favoriteId, pathname } = prevState;
+  const user = await getAuthUser()
+  const { productId, favoriteId, pathname } = prevState
   try {
     if (favoriteId) {
       await db.favorite.delete({
         where: {
           id: favoriteId,
         },
-      });
+      })
     } else {
       await db.favorite.create({
         data: {
           productId,
           clerkId: user.id,
         },
-      });
+      })
     }
-    revalidatePath(pathname);
-    return { message: favoriteId ? 'Removed from Faves' : 'Added to Faves' };
+    revalidatePath(pathname)
+    return { message: favoriteId ? 'Removed from Faves' : 'Added to Faves' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 - test in home, products and single product page
@@ -3309,7 +3309,7 @@ export const toggleFavoriteAction = async (prevState: {
 
 ```ts
 export const fetchUserFavorites = async () => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
   const favorites = await db.favorite.findMany({
     where: {
       clerkId: user.id,
@@ -3317,9 +3317,9 @@ export const fetchUserFavorites = async () => {
     include: {
       product: true,
     },
-  });
-  return favorites;
-};
+  })
+  return favorites
+}
 ```
 
 ### Favorites Page
@@ -3327,36 +3327,36 @@ export const fetchUserFavorites = async () => {
 - favorites/loading.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import LoadingContainer from '@/components/global/LoadingContainer';
+import LoadingContainer from '@/components/global/LoadingContainer'
 
 function loading() {
-  return <LoadingContainer />;
+  return <LoadingContainer />
 }
-export default loading;
+export default loading
 ```
 
 page.tsx
 
 ```tsx
-import { fetchUserFavorites } from '@/utils/actions';
-import SectionTitle from '@/components/global/SectionTitle';
-import ProductsGrid from '@/components/products/ProductsGrid';
+import { fetchUserFavorites } from '@/utils/actions'
+import SectionTitle from '@/components/global/SectionTitle'
+import ProductsGrid from '@/components/products/ProductsGrid'
 
 async function FavoritesPage() {
-  const favorites = await fetchUserFavorites();
+  const favorites = await fetchUserFavorites()
   if (favorites.length === 0)
-    return <SectionTitle text='You have no favorites yet.' />;
+    return <SectionTitle text="You have no favorites yet." />
   return (
     <div>
-      <SectionTitle text='Favorites' />
+      <SectionTitle text="Favorites" />
       <ProductsGrid products={favorites.map((favorite) => favorite.product)} />
     </div>
-  );
+  )
 }
 
-export default FavoritesPage;
+export default FavoritesPage
 ```
 
 ### React Share
@@ -3373,14 +3373,14 @@ npm i react-share
 components/single-product/ShareButton.tsx
 
 ```tsx
-'use client';
+'use client'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { Button } from '../ui/button';
-import { LuShare2 } from 'react-icons/lu';
+} from '@/components/ui/popover'
+import { Button } from '../ui/button'
+import { LuShare2 } from 'react-icons/lu'
 
 import {
   TwitterShareButton,
@@ -3389,24 +3389,24 @@ import {
   TwitterIcon,
   EmailIcon,
   LinkedinIcon,
-} from 'react-share';
+} from 'react-share'
 
 function ShareButton({ productId, name }: { productId: string; name: string }) {
-  const url = process.env.NEXT_PUBLIC_WEBSITE_URL;
-  const shareLink = `${url}/products/${productId}`;
+  const url = process.env.NEXT_PUBLIC_WEBSITE_URL
+  const shareLink = `${url}/products/${productId}`
 
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='outline' size='icon' className='p-2'>
+        <Button variant="outline" size="icon" className="p-2">
           <LuShare2 />
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        side='top'
-        align='end'
+        side="top"
+        align="end"
         sideOffset={10}
-        className='flex items-center gap-x-2 justify-center w-full'
+        className="flex items-center gap-x-2 justify-center w-full"
       >
         <TwitterShareButton url={shareLink} title={name}>
           <TwitterIcon size={32} round />
@@ -3419,25 +3419,25 @@ function ShareButton({ productId, name }: { productId: string; name: string }) {
         </EmailShareButton>
       </PopoverContent>
     </Popover>
-  );
+  )
 }
-export default ShareButton;
+export default ShareButton
 ```
 
 - products/[id]/page.tsx
 
 ```tsx
-import ShareButton from '@/components/single-product/ShareButton';
+import ShareButton from '@/components/single-product/ShareButton'
 
 return (
-  <div className='flex gap-x-8 items-center'>
-    <h1 className='capitalize text-3xl font-bold'>{name}</h1>
-    <div className='flex items-center gap-x-2'>
+  <div className="flex gap-x-8 items-center">
+    <h1 className="capitalize text-3xl font-bold">{name}</h1>
+    <div className="flex items-center gap-x-2">
       <FavoriteToggleButton productId={params.id} />
       <ShareButton name={product.name} productId={params.id} />
     </div>
   </div>
-);
+)
 ```
 
 ### Review Model
@@ -3475,14 +3475,14 @@ export const createReviewAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  return { message: 'review submitted successfully' };
-};
+  return { message: 'review submitted successfully' }
+}
 
-export const fetchProductReviews = async () => {};
-export const fetchProductReviewsByUser = async () => {};
-export const deleteReviewAction = async () => {};
-export const findExistingReview = async () => {};
-export const fetchProductRating = async () => {};
+export const fetchProductReviews = async () => {}
+export const fetchProductReviewsByUser = async () => {}
+export const deleteReviewAction = async () => {}
+export const findExistingReview = async () => {}
+export const fetchProductRating = async () => {}
 ```
 
 - components/reviews
@@ -3496,30 +3496,30 @@ export const fetchProductRating = async () => {};
 ### RatingInput Component
 
 ```tsx
-import { Label } from '@/components/ui/label';
+import { Label } from '@/components/ui/label'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '@/components/ui/select'
 
 const RatingInput = ({
   name,
   labelText,
 }: {
-  name: string;
-  labelText?: string;
+  name: string
+  labelText?: string
 }) => {
   const numbers = Array.from({ length: 5 }, (_, i) => {
-    const value = i + 1;
-    return value.toString();
-  }).reverse();
+    const value = i + 1
+    return value.toString()
+  }).reverse()
 
   return (
-    <div className='mb-2 max-w-xs'>
-      <Label htmlFor={name} className='capitalize'>
+    <div className="mb-2 max-w-xs">
+      <Label htmlFor={name} className="capitalize">
         {labelText || name}
       </Label>
       <Select defaultValue={numbers[0]} name={name} required>
@@ -3532,85 +3532,85 @@ const RatingInput = ({
               <SelectItem key={number} value={number}>
                 {number}
               </SelectItem>
-            );
+            )
           })}
         </SelectContent>
       </Select>
     </div>
-  );
-};
+  )
+}
 
-export default RatingInput;
+export default RatingInput
 ```
 
 ### SubmitReview Component
 
 ```tsx
-'use client';
-import { useState } from 'react';
-import { SubmitButton } from '@/components/form/Buttons';
-import FormContainer from '@/components/form/FormContainer';
-import { Card } from '@/components/ui/card';
-import RatingInput from '@/components/reviews/RatingInput';
-import TextAreaInput from '@/components/form/TextAreaInput';
-import { Button } from '@/components/ui/button';
-import { createReviewAction } from '@/utils/actions';
-import { useUser } from '@clerk/nextjs';
+'use client'
+import { useState } from 'react'
+import { SubmitButton } from '@/components/form/Buttons'
+import FormContainer from '@/components/form/FormContainer'
+import { Card } from '@/components/ui/card'
+import RatingInput from '@/components/reviews/RatingInput'
+import TextAreaInput from '@/components/form/TextAreaInput'
+import { Button } from '@/components/ui/button'
+import { createReviewAction } from '@/utils/actions'
+import { useUser } from '@clerk/nextjs'
 function SubmitReview({ productId }: { productId: string }) {
-  const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
-  const { user } = useUser();
+  const [isReviewFormVisible, setIsReviewFormVisible] = useState(false)
+  const { user } = useUser()
   return (
     <div>
       <Button
-        size='lg'
-        className='capitalize'
+        size="lg"
+        className="capitalize"
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
       >
         leave review
       </Button>
       {isReviewFormVisible && (
-        <Card className='p-8 mt-8'>
+        <Card className="p-8 mt-8">
           <FormContainer action={createReviewAction}>
-            <input type='hidden' name='productId' value={productId} />
+            <input type="hidden" name="productId" value={productId} />
             <input
-              type='hidden'
-              name='authorName'
+              type="hidden"
+              name="authorName"
               value={user?.firstName || 'user'}
             />
             <input
-              type='hidden'
-              name='authorImageUrl'
+              type="hidden"
+              name="authorImageUrl"
               value={user?.imageUrl || ''}
             />
-            <RatingInput name='rating' />
+            <RatingInput name="rating" />
             <TextAreaInput
-              name='comment'
-              labelText='feedback'
-              defaultValue='Outstanding product!!!'
+              name="comment"
+              labelText="feedback"
+              defaultValue="Outstanding product!!!"
             />
-            <SubmitButton className='mt-4' />
+            <SubmitButton className="mt-4" />
           </FormContainer>
         </Card>
       )}
     </div>
-  );
+  )
 }
 
-export default SubmitReview;
+export default SubmitReview
 ```
 
 - render in app/products/[id]/page.tsx after second column
 
 ```tsx
-import SubmitReview from '@/components/reviews/SubmitReview';
-import ProductReviews from '@/components/reviews/ProductReviews';
+import SubmitReview from '@/components/reviews/SubmitReview'
+import ProductReviews from '@/components/reviews/ProductReviews'
 
 return (
   <>
     <ProductReviews productId={params.id} />
     <SubmitReview productId={params.id} />
   </>
-);
+)
 ```
 
 ### Create Review Action
@@ -3637,7 +3637,7 @@ export const reviewSchema = z.object({
     .string()
     .min(10, { message: 'Comment must be at least 10 characters long' })
     .max(1000, { message: 'Comment must be at most 1000 characters long' }),
-});
+})
 ```
 
 - actions.ts
@@ -3647,30 +3647,30 @@ export const createReviewAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
   try {
-    const rawData = Object.fromEntries(formData);
+    const rawData = Object.fromEntries(formData)
 
-    const validatedFields = validateWithZodSchema(reviewSchema, rawData);
+    const validatedFields = validateWithZodSchema(reviewSchema, rawData)
 
     await db.review.create({
       data: {
         ...validatedFields,
         clerkId: user.id,
       },
-    });
-    revalidatePath(`/products/${validatedFields.productId}`);
-    return { message: 'Review submitted successfully' };
+    })
+    revalidatePath(`/products/${validatedFields.productId}`)
+    return { message: 'Review submitted successfully' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### Rating Component
 
 ```tsx
-import { FaStar, FaRegStar } from 'react-icons/fa';
+import { FaStar, FaRegStar } from 'react-icons/fa'
 
 function Rating({ rating }: { rating: number }) {
   // rating = 2
@@ -3678,60 +3678,60 @@ function Rating({ rating }: { rating: number }) {
   // 2 <= 2 true
   // 3 <= 2 false
   // ....
-  const stars = Array.from({ length: 5 }, (_, i) => i + 1 <= rating);
+  const stars = Array.from({ length: 5 }, (_, i) => i + 1 <= rating)
 
   return (
-    <div className='flex items-center gap-x-1'>
+    <div className="flex items-center gap-x-1">
       {stars.map((isFilled, i) => {
         const className = `w-3 h-3 ${
           isFilled ? 'text-primary' : 'text-gray-400'
-        }`;
+        }`
         return isFilled ? (
           <FaStar className={className} key={i} />
         ) : (
           <FaRegStar className={className} key={i} />
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default Rating;
+export default Rating
 ```
 
 ### Comment Component
 
 ```tsx
-'use client';
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+'use client'
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
 function Comment({ comment }: { comment: string }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
-  const longComment = comment.length > 130;
+    setIsExpanded(!isExpanded)
+  }
+  const longComment = comment.length > 130
   const displayComment =
-    longComment && !isExpanded ? `${comment.slice(0, 130)}...` : comment;
+    longComment && !isExpanded ? `${comment.slice(0, 130)}...` : comment
 
   return (
     <div>
-      <p className='text-sm'>{displayComment}</p>
+      <p className="text-sm">{displayComment}</p>
       {longComment && (
         <Button
-          variant='link'
-          className='pl-0 text-muted-foreground'
+          variant="link"
+          className="pl-0 text-muted-foreground"
           onClick={toggleExpanded}
         >
           {isExpanded ? 'Show Less' : 'Show More'}
         </Button>
       )}
     </div>
-  );
+  )
 }
 
-export default Comment;
+export default Comment
 ```
 
 ### Fetch Product Reviews
@@ -3745,75 +3745,75 @@ export const fetchProductReviews = async (productId: string) => {
     orderBy: {
       createdAt: 'desc',
     },
-  });
-  return reviews;
-};
+  })
+  return reviews
+}
 ```
 
 ### Product Reviews
 
 ```tsx
-import { fetchProductReviews } from '@/utils/actions';
+import { fetchProductReviews } from '@/utils/actions'
 
-import ReviewCard from './ReviewCard';
-import SectionTitle from '../global/SectionTitle';
+import ReviewCard from './ReviewCard'
+import SectionTitle from '../global/SectionTitle'
 async function ProductReviews({ productId }: { productId: string }) {
-  const reviews = await fetchProductReviews(productId);
+  const reviews = await fetchProductReviews(productId)
 
   return (
-    <div className='mt-16'>
-      <SectionTitle text='product reviews' />
+    <div className="mt-16">
+      <SectionTitle text="product reviews" />
 
-      <div className='grid md:grid-cols-2 gap-8 my-8'>
+      <div className="grid md:grid-cols-2 gap-8 my-8">
         {reviews.map((review) => {
-          const { comment, rating, authorImageUrl, authorName } = review;
+          const { comment, rating, authorImageUrl, authorName } = review
           const reviewInfo = {
             comment,
             rating,
             image: authorImageUrl,
             name: authorName,
-          };
-          return <ReviewCard key={review.id} reviewInfo={reviewInfo} />;
+          }
+          return <ReviewCard key={review.id} reviewInfo={reviewInfo} />
         })}
       </div>
     </div>
-  );
+  )
 }
-export default ProductReviews;
+export default ProductReviews
 ```
 
 ### ReviewCard
 
 ```tsx
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import Rating from './Rating';
-import Comment from './Comment';
-import Image from 'next/image';
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import Rating from './Rating'
+import Comment from './Comment'
+import Image from 'next/image'
 
 type ReviewCardProps = {
   reviewInfo: {
-    comment: string;
-    rating: number;
-    name: string;
-    image: string;
-  };
-  children?: React.ReactNode;
-};
+    comment: string
+    rating: number
+    name: string
+    image: string
+  }
+  children?: React.ReactNode
+}
 
 function ReviewCard({ reviewInfo, children }: ReviewCardProps) {
   return (
-    <Card className='relative'>
+    <Card className="relative">
       <CardHeader>
-        <div className='flex items-center'>
+        <div className="flex items-center">
           <Image
             src={reviewInfo.image}
             alt={reviewInfo.name}
             width={48}
             height={48}
-            className='w-12 h-12 rounded-full object-cover'
+            className="w-12 h-12 rounded-full object-cover"
           />
-          <div className='ml-4'>
-            <h3 className='text-sm font-bold capitalize mb-1'>
+          <div className="ml-4">
+            <h3 className="text-sm font-bold capitalize mb-1">
               {reviewInfo.name}
             </h3>
             <Rating rating={reviewInfo.rating} />
@@ -3823,11 +3823,11 @@ function ReviewCard({ reviewInfo, children }: ReviewCardProps) {
       <CardContent>
         <Comment comment={reviewInfo.comment} />
       </CardContent>
-      <div className='absolute top-3 right-3'>{children}</div>
+      <div className="absolute top-3 right-3">{children}</div>
     </Card>
-  );
+  )
 }
-export default ReviewCard;
+export default ReviewCard
 ```
 
 - next.config.mjs
@@ -3854,14 +3854,14 @@ export const fetchProductRating = async (productId: string) => {
     where: {
       productId,
     },
-  });
+  })
 
   // empty array if no reviews
   return {
     rating: result[0]?._avg.rating?.toFixed(1) ?? 0,
     count: result[0]?._count.rating ?? 0,
-  };
-};
+  }
+}
 ```
 
 ### ProductRating
@@ -3869,14 +3869,14 @@ export const fetchProductRating = async (productId: string) => {
 - components/single-product/ProductRating.tsx
 
 ```tsx
-const { rating, count } = await fetchProductRating(productId);
+const { rating, count } = await fetchProductRating(productId)
 ```
 
 ### FetchProductReviewsByUser and DeleteReview Action
 
 ```ts
 export const fetchProductReviewsByUser = async () => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
   const reviews = await db.review.findMany({
     where: {
       clerkId: user.id,
@@ -3892,12 +3892,12 @@ export const fetchProductReviewsByUser = async () => {
         },
       },
     },
-  });
-  return reviews;
-};
+  })
+  return reviews
+}
 export const deleteReviewAction = async (prevState: { reviewId: string }) => {
-  const { reviewId } = prevState;
-  const user = await getAuthUser();
+  const { reviewId } = prevState
+  const user = await getAuthUser()
 
   try {
     await db.review.delete({
@@ -3905,14 +3905,14 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
         id: reviewId,
         clerkId: user.id,
       },
-    });
+    })
 
-    revalidatePath('/reviews');
-    return { message: 'Review deleted successfully' };
+    revalidatePath('/reviews')
+    return { message: 'Review deleted successfully' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### Reviews Page
@@ -3923,85 +3923,85 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
 page.tsx
 
 ```tsx
-import { deleteReviewAction, fetchProductReviewsByUser } from '@/utils/actions';
-import ReviewCard from '@/components/reviews/ReviewCard';
-import SectionTitle from '@/components/global/SectionTitle';
-import FormContainer from '@/components/form/FormContainer';
-import { IconButton } from '@/components/form/Buttons';
+import { deleteReviewAction, fetchProductReviewsByUser } from '@/utils/actions'
+import ReviewCard from '@/components/reviews/ReviewCard'
+import SectionTitle from '@/components/global/SectionTitle'
+import FormContainer from '@/components/form/FormContainer'
+import { IconButton } from '@/components/form/Buttons'
 async function ReviewsPage() {
-  const reviews = await fetchProductReviewsByUser();
+  const reviews = await fetchProductReviewsByUser()
   if (reviews.length === 0)
-    return <SectionTitle text='you have no reviews yet' />;
+    return <SectionTitle text="you have no reviews yet" />
 
   return (
     <>
-      <SectionTitle text='Your Reviews' />
-      <section className='grid md:grid-cols-2 gap-8 mt-4 '>
+      <SectionTitle text="Your Reviews" />
+      <section className="grid md:grid-cols-2 gap-8 mt-4 ">
         {reviews.map((review) => {
-          const { comment, rating } = review;
-          const { name, image } = review.product;
+          const { comment, rating } = review
+          const { name, image } = review.product
           const reviewInfo = {
             comment,
             rating,
             name,
             image,
-          };
+          }
           return (
             <ReviewCard key={review.id} reviewInfo={reviewInfo}>
               <DeleteReview reviewId={review.id} />
             </ReviewCard>
-          );
+          )
         })}
       </section>
     </>
-  );
+  )
 }
 
 const DeleteReview = ({ reviewId }: { reviewId: string }) => {
-  const deleteReview = deleteReviewAction.bind(null, { reviewId });
+  const deleteReview = deleteReviewAction.bind(null, { reviewId })
   return (
     <FormContainer action={deleteReview}>
-      <IconButton actionType='delete' />
+      <IconButton actionType="delete" />
     </FormContainer>
-  );
-};
+  )
+}
 
-export default ReviewsPage;
+export default ReviewsPage
 ```
 
 loading.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import { Card, CardHeader } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
+import { Card, CardHeader } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 function loading() {
   return (
-    <section className='grid md:grid-cols-2 gap-8 mt-4 '>
+    <section className="grid md:grid-cols-2 gap-8 mt-4 ">
       <ReviewLoadingCard />
       <ReviewLoadingCard />
     </section>
-  );
+  )
 }
 
 const ReviewLoadingCard = () => {
   return (
     <Card>
       <CardHeader>
-        <div className='flex items-center'>
-          <Skeleton className='w-12 h-12 rounded-full' />
-          <div className='ml-4'>
-            <Skeleton className='w-[150px] h-4 mb-2' />
-            <Skeleton className='w-[100px] h-4' />
+        <div className="flex items-center">
+          <Skeleton className="w-12 h-12 rounded-full" />
+          <div className="ml-4">
+            <Skeleton className="w-[150px] h-4 mb-2" />
+            <Skeleton className="w-[100px] h-4" />
           </div>
         </div>
       </CardHeader>
     </Card>
-  );
-};
+  )
+}
 
-export default loading;
+export default loading
 ```
 
 ### Restrict Access
@@ -4015,27 +4015,27 @@ export const findExistingReview = async (userId: string, productId: string) => {
       clerkId: userId,
       productId,
     },
-  });
-};
+  })
+}
 ```
 
 - app/products/[id]/page.tsx
 
 ```tsx
-import { fetchSingleProduct, findExistingReview } from '@/utils/actions';
-import { auth } from '@clerk/nextjs/server';
+import { fetchSingleProduct, findExistingReview } from '@/utils/actions'
+import { auth } from '@clerk/nextjs/server'
 
 async function SingleProductPage({ params }: { params: { id: string } }) {
-  const { userId } = auth();
+  const { userId } = auth()
   const reviewDoesNotExist =
-    userId && !(await findExistingReview(userId, product.id));
+    userId && !(await findExistingReview(userId, product.id))
 
   return (
     <>
       <ProductReviews productId={params.id} />
       {reviewDoesNotExist && <SubmitReview productId={params.id} />}
     </>
-  );
+  )
 }
 ```
 
@@ -4077,21 +4077,21 @@ model CartItem {
 - actions.ts
 
 ```ts
-export const fetchCartItems = async () => {};
+export const fetchCartItems = async () => {}
 
-const fetchProduct = async () => {};
+const fetchProduct = async () => {}
 
-export const fetchOrCreateCart = async () => {};
+export const fetchOrCreateCart = async () => {}
 
-const updateOrCreateCartItem = async () => {};
+const updateOrCreateCartItem = async () => {}
 
-export const updateCart = async () => {};
+export const updateCart = async () => {}
 
-export const addToCartAction = async () => {};
+export const addToCartAction = async () => {}
 
-export const removeCartItemAction = async () => {};
+export const removeCartItemAction = async () => {}
 
-export const updateCartItemAction = async () => {};
+export const updateCartItemAction = async () => {}
 ```
 
 ### FetchCartItems
@@ -4100,7 +4100,7 @@ export const updateCartItemAction = async () => {};
 
 ```ts
 export const fetchCartItems = async () => {
-  const { userId } = auth();
+  const { userId } = auth()
 
   const cart = await db.cart.findFirst({
     where: {
@@ -4109,16 +4109,16 @@ export const fetchCartItems = async () => {
     select: {
       numItemsInCart: true,
     },
-  });
-  return cart?.numItemsInCart || 0;
-};
+  })
+  return cart?.numItemsInCart || 0
+}
 ```
 
 - components/navbar/CartButton.tsx
 
 ```tsx
 async function CartButton() {
-  const numItemsInCart = await fetchCartItems();
+  const numItemsInCart = await fetchCartItems()
 }
 ```
 
@@ -4129,13 +4129,13 @@ async function CartButton() {
 ```tsx
 export const ProductSignInButton = () => {
   return (
-    <SignInButton mode='modal'>
-      <Button type='button' size='default' className='mt-8'>
+    <SignInButton mode="modal">
+      <Button type="button" size="default" className="mt-8">
         Please Sign In
       </Button>
     </SignInButton>
-  );
-};
+  )
+}
 ```
 
 ### SelectProductAmount Component
@@ -4149,7 +4149,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from '@/components/ui/select'
 
 export enum Mode {
   SingleProduct = 'singleProduct',
@@ -4157,28 +4157,28 @@ export enum Mode {
 }
 
 type SelectProductAmountProps = {
-  mode: Mode.SingleProduct;
-  amount: number;
-  setAmount: (value: number) => void;
-};
+  mode: Mode.SingleProduct
+  amount: number
+  setAmount: (value: number) => void
+}
 
 type SelectCartItemAmountProps = {
-  mode: Mode.CartItem;
-  amount: number;
-  setAmount: (value: number) => Promise<void>;
-  isLoading: boolean;
-};
+  mode: Mode.CartItem
+  amount: number
+  setAmount: (value: number) => Promise<void>
+  isLoading: boolean
+}
 
 function SelectProductAmount(
   props: SelectProductAmountProps | SelectCartItemAmountProps
 ) {
-  const { mode, amount, setAmount } = props;
+  const { mode, amount, setAmount } = props
 
-  const cartItem = mode === Mode.CartItem;
+  const cartItem = mode === Mode.CartItem
 
   return (
     <>
-      <h4 className='mb-2'>Amount : </h4>
+      <h4 className="mb-2">Amount : </h4>
       <Select
         defaultValue={amount.toString()}
         onValueChange={(value) => setAmount(Number(value))}
@@ -4189,39 +4189,39 @@ function SelectProductAmount(
         </SelectTrigger>
         <SelectContent>
           {Array.from({ length: cartItem ? amount + 10 : 10 }, (_, index) => {
-            const selectValue = (index + 1).toString();
+            const selectValue = (index + 1).toString()
             return (
               <SelectItem key={index} value={selectValue}>
                 {selectValue}
               </SelectItem>
-            );
+            )
           })}
         </SelectContent>
       </Select>
     </>
-  );
+  )
 }
-export default SelectProductAmount;
+export default SelectProductAmount
 ```
 
 ### AddToCart Component
 
 ```tsx
-'use client';
-import { useState } from 'react';
-import SelectProductAmount from './SelectProductAmount';
-import { Mode } from './SelectProductAmount';
-import FormContainer from '../form/FormContainer';
-import { SubmitButton } from '../form/Buttons';
-import { addToCartAction } from '@/utils/actions';
-import { useAuth } from '@clerk/nextjs';
-import { ProductSignInButton } from '../form/Buttons';
+'use client'
+import { useState } from 'react'
+import SelectProductAmount from './SelectProductAmount'
+import { Mode } from './SelectProductAmount'
+import FormContainer from '../form/FormContainer'
+import { SubmitButton } from '../form/Buttons'
+import { addToCartAction } from '@/utils/actions'
+import { useAuth } from '@clerk/nextjs'
+import { ProductSignInButton } from '../form/Buttons'
 
 function AddToCart({ productId }: { productId: string }) {
-  const [amount, setAmount] = useState(1);
-  const { userId } = useAuth();
+  const [amount, setAmount] = useState(1)
+  const { userId } = useAuth()
   return (
-    <div className='mt-4'>
+    <div className="mt-4">
       <SelectProductAmount
         mode={Mode.SingleProduct}
         amount={amount}
@@ -4229,17 +4229,17 @@ function AddToCart({ productId }: { productId: string }) {
       />
       {userId ? (
         <FormContainer action={addToCartAction}>
-          <input type='hidden' name='productId' value={productId} />
-          <input type='hidden' name='amount' value={amount} />
-          <SubmitButton text='add to cart' size='default' className='mt-8' />
+          <input type="hidden" name="productId" value={productId} />
+          <input type="hidden" name="amount" value={amount} />
+          <SubmitButton text="add to cart" size="default" className="mt-8" />
         </FormContainer>
       ) : (
         <ProductSignInButton />
       )}
     </div>
-  );
+  )
 }
-export default AddToCart;
+export default AddToCart
 ```
 
 ### AddToCart Action
@@ -4247,44 +4247,44 @@ export default AddToCart;
 - actions.ts
 
 ```ts
-import { Cart } from '@prisma/client';
+import { Cart } from '@prisma/client'
 
 const fetchProduct = async (productId: string) => {
   const product = await db.product.findUnique({
     where: {
       id: productId,
     },
-  });
+  })
 
   if (!product) {
-    throw new Error('Product not found');
+    throw new Error('Product not found')
   }
-  return product;
-};
+  return product
+}
 const includeProductClause = {
   cartItems: {
     include: {
       product: true,
     },
   },
-};
+}
 
 export const fetchOrCreateCart = async ({
   userId,
   errorOnFailure = false,
 }: {
-  userId: string;
-  errorOnFailure?: boolean;
+  userId: string
+  errorOnFailure?: boolean
 }) => {
   let cart = await db.cart.findFirst({
     where: {
       clerkId: userId,
     },
     include: includeProductClause,
-  });
+  })
 
   if (!cart && errorOnFailure) {
-    throw new Error('Cart not found');
+    throw new Error('Cart not found')
   }
 
   if (!cart) {
@@ -4293,27 +4293,27 @@ export const fetchOrCreateCart = async ({
         clerkId: userId,
       },
       include: includeProductClause,
-    });
+    })
   }
 
-  return cart;
-};
+  return cart
+}
 
 const updateOrCreateCartItem = async ({
   productId,
   cartId,
   amount,
 }: {
-  productId: string;
-  cartId: string;
-  amount: number;
+  productId: string
+  cartId: string
+  amount: number
 }) => {
   let cartItem = await db.cartItem.findFirst({
     where: {
       productId,
       cartId,
     },
-  });
+  })
 
   if (cartItem) {
     cartItem = await db.cartItem.update({
@@ -4323,13 +4323,13 @@ const updateOrCreateCartItem = async ({
       data: {
         amount: cartItem.amount + amount,
       },
-    });
+    })
   } else {
     cartItem = await db.cartItem.create({
       data: { amount, productId, cartId },
-    });
+    })
   }
-};
+}
 
 export const updateCart = async (cart: Cart) => {
   const cartItems = await db.cartItem.findMany({
@@ -4339,18 +4339,18 @@ export const updateCart = async (cart: Cart) => {
     include: {
       product: true, // Include the related product
     },
-  });
+  })
 
-  let numItemsInCart = 0;
-  let cartTotal = 0;
+  let numItemsInCart = 0
+  let cartTotal = 0
 
   for (const item of cartItems) {
-    numItemsInCart += item.amount;
-    cartTotal += item.amount * item.product.price;
+    numItemsInCart += item.amount
+    cartTotal += item.amount * item.product.price
   }
-  const tax = cart.taxRate * cartTotal;
-  const shipping = cartTotal ? cart.shipping : 0;
-  const orderTotal = cartTotal + tax + shipping;
+  const tax = cart.taxRate * cartTotal
+  const shipping = cartTotal ? cart.shipping : 0
+  const orderTotal = cartTotal + tax + shipping
 
   await db.cart.update({
     where: {
@@ -4362,23 +4362,23 @@ export const updateCart = async (cart: Cart) => {
       tax,
       orderTotal,
     },
-  });
-};
+  })
+}
 
 export const addToCartAction = async (prevState: any, formData: FormData) => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
   try {
-    const productId = formData.get('productId') as string;
-    const amount = Number(formData.get('amount'));
-    await fetchProduct(productId);
-    const cart = await fetchOrCreateCart({ userId: user.id });
-    await updateOrCreateCartItem({ productId, cartId: cart.id, amount });
-    await updateCart(cart);
+    const productId = formData.get('productId') as string
+    const amount = Number(formData.get('amount'))
+    await fetchProduct(productId)
+    const cart = await fetchOrCreateCart({ userId: user.id })
+    await updateOrCreateCartItem({ productId, cartId: cart.id, amount })
+    await updateCart(cart)
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-  redirect('/cart');
-};
+  redirect('/cart')
+}
 ```
 
 ### Cart Page
@@ -4393,66 +4393,66 @@ export const addToCartAction = async (prevState: any, formData: FormData) => {
 - app/cart/page.tsx
 
 ```tsx
-import CartItemsList from '@/components/cart/CartItemsList';
-import CartTotals from '@/components/cart/CartTotals';
-import SectionTitle from '@/components/global/SectionTitle';
-import { fetchOrCreateCart, updateCart } from '@/utils/actions';
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
+import CartItemsList from '@/components/cart/CartItemsList'
+import CartTotals from '@/components/cart/CartTotals'
+import SectionTitle from '@/components/global/SectionTitle'
+import { fetchOrCreateCart, updateCart } from '@/utils/actions'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 async function CartPage() {
-  const { userId } = auth();
-  if (!userId) redirect('/');
-  const cart = await fetchOrCreateCart({ userId });
-  await updateCart(cart);
+  const { userId } = auth()
+  if (!userId) redirect('/')
+  const cart = await fetchOrCreateCart({ userId })
+  await updateCart(cart)
 
   if (cart.numItemsInCart === 0) {
-    return <SectionTitle text='Empty cart' />;
+    return <SectionTitle text="Empty cart" />
   }
   return (
     <>
-      <SectionTitle text='Shopping Cart' />
-      <div className='mt-8 grid gap-4 lg:grid-cols-12'>
-        <div className='lg:col-span-8'>
+      <SectionTitle text="Shopping Cart" />
+      <div className="mt-8 grid gap-4 lg:grid-cols-12">
+        <div className="lg:col-span-8">
           <CartItemsList cartItems={cart.cartItems} />
         </div>
-        <div className='lg:col-span-4 lg:pl-4'>
+        <div className="lg:col-span-4 lg:pl-4">
           <CartTotals cart={cart} />
         </div>
       </div>
     </>
-  );
+  )
 }
-export default CartPage;
+export default CartPage
 ```
 
 ### CartTotals Component
 
 ```tsx
-import { Card, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { formatCurrency } from '@/utils/format';
-import { createOrderAction } from '@/utils/actions';
-import FormContainer from '../form/FormContainer';
-import { SubmitButton } from '../form/Buttons';
-import { Cart } from '@prisma/client';
+import { Card, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
+import { formatCurrency } from '@/utils/format'
+import { createOrderAction } from '@/utils/actions'
+import FormContainer from '../form/FormContainer'
+import { SubmitButton } from '../form/Buttons'
+import { Cart } from '@prisma/client'
 
 function CartTotals({ cart }: { cart: Cart }) {
-  const { cartTotal, shipping, tax, orderTotal } = cart;
+  const { cartTotal, shipping, tax, orderTotal } = cart
   return (
     <div>
-      <Card className='p-8 '>
-        <CartTotalRow label='Subtotal' amount={cartTotal} />
-        <CartTotalRow label='Shipping' amount={shipping} />
-        <CartTotalRow label='Tax' amount={tax} />
-        <CardTitle className='mt-8'>
-          <CartTotalRow label='Order Total' amount={orderTotal} lastRow />
+      <Card className="p-8 ">
+        <CartTotalRow label="Subtotal" amount={cartTotal} />
+        <CartTotalRow label="Shipping" amount={shipping} />
+        <CartTotalRow label="Tax" amount={tax} />
+        <CardTitle className="mt-8">
+          <CartTotalRow label="Order Total" amount={orderTotal} lastRow />
         </CardTitle>
       </Card>
       <FormContainer action={createOrderAction}>
-        <SubmitButton text='Place Order' className='w-full mt-8' />
+        <SubmitButton text="Place Order" className="w-full mt-8" />
       </FormContainer>
     </div>
-  );
+  )
 }
 
 function CartTotalRow({
@@ -4460,22 +4460,22 @@ function CartTotalRow({
   amount,
   lastRow,
 }: {
-  label: string;
-  amount: number;
-  lastRow?: boolean;
+  label: string
+  amount: number
+  lastRow?: boolean
 }) {
   return (
     <>
-      <p className='flex justify-between text-sm'>
+      <p className="flex justify-between text-sm">
         <span>{label}</span>
         <span>{formatCurrency(amount)}</span>
       </p>
-      {lastRow ? null : <Separator className='my-2' />}
+      {lastRow ? null : <Separator className="my-2" />}
     </>
-  );
+  )
 }
 
-export default CartTotals;
+export default CartTotals
 ```
 
 ### Cart Item Columns - 1,2 and 4
@@ -4483,51 +4483,51 @@ export default CartTotals;
 - cart/CartItemColumns.tsx
 
 ```tsx
-import { formatCurrency } from '@/utils/format';
-import Image from 'next/image';
-import Link from 'next/link';
+import { formatCurrency } from '@/utils/format'
+import Image from 'next/image'
+import Link from 'next/link'
 export const FirstColumn = ({
   name,
   image,
 }: {
-  image: string;
-  name: string;
+  image: string
+  name: string
 }) => {
   return (
-    <div className='relative h-24 w-24 sm:h-32 sm:w-32'>
+    <div className="relative h-24 w-24 sm:h-32 sm:w-32">
       <Image
         src={image}
         alt={name}
         fill
-        sizes='(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw'
+        sizes="(max-width:768px) 100vw,(max-width:1200px) 50vw,33vw"
         priority
-        className='w-full rounded-md object-cover'
+        className="w-full rounded-md object-cover"
       />
     </div>
-  );
-};
+  )
+}
 export const SecondColumn = ({
   name,
   company,
   productId,
 }: {
-  name: string;
-  company: string;
-  productId: string;
+  name: string
+  company: string
+  productId: string
 }) => {
   return (
-    <div className=' sm:w-48'>
+    <div className=" sm:w-48">
       <Link href={`/products/${productId}`}>
-        <h3 className='capitalize font-medium hover:underline'>{name}</h3>
+        <h3 className="capitalize font-medium hover:underline">{name}</h3>
       </Link>
-      <h4 className='mt-2 capitalize text-xs'>{company}</h4>
+      <h4 className="mt-2 capitalize text-xs">{company}</h4>
     </div>
-  );
-};
+  )
+}
 
 export const FourthColumn = ({ price }: { price: number }) => {
-  return <p className='font-medium md:ml-auto'>{formatCurrency(price)}</p>;
-};
+  return <p className="font-medium md:ml-auto">{formatCurrency(price)}</p>
+}
 ```
 
 ### CartItemsList Component
@@ -4535,40 +4535,40 @@ export const FourthColumn = ({ price }: { price: number }) => {
 - utils/types.ts
 
 ```ts
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client'
 
 export type CartItemWithProduct = Prisma.CartItemGetPayload<{
-  include: { product: true };
-}>;
+  include: { product: true }
+}>
 ```
 
 ```tsx
-import { Card } from '@/components/ui/card';
-import { FirstColumn, SecondColumn, FourthColumn } from './CartItemColumns';
-import ThirdColumn from './ThirdColumn';
-import { CartItemWithProduct } from '@/utils/types';
+import { Card } from '@/components/ui/card'
+import { FirstColumn, SecondColumn, FourthColumn } from './CartItemColumns'
+import ThirdColumn from './ThirdColumn'
+import { CartItemWithProduct } from '@/utils/types'
 function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
   return (
     <div>
       {cartItems.map((cartItem) => {
-        const { id, amount } = cartItem;
-        const { id: productId, image, name, company, price } = cartItem.product;
+        const { id, amount } = cartItem
+        const { id: productId, image, name, company, price } = cartItem.product
         return (
           <Card
             key={id}
-            className='flex flex-col gap-y-4 md:flex-row flex-wrap p-6 mb-8 gap-x-4'
+            className="flex flex-col gap-y-4 md:flex-row flex-wrap p-6 mb-8 gap-x-4"
           >
             <FirstColumn image={image} name={name} />
             <SecondColumn name={name} company={company} productId={productId} />
             <ThirdColumn id={id} quantity={amount} />
             <FourthColumn price={price} />
           </Card>
-        );
+        )
       })}
     </div>
-  );
+  )
 }
-export default CartItemsList;
+export default CartItemsList
 ```
 
 ### Cart Item - Third Column
@@ -4582,29 +4582,29 @@ export const removeCartItemAction = async (
   prevState: any,
   formData: FormData
 ) => {
-  return { message: 'Item removed from cart' };
-};
+  return { message: 'Item removed from cart' }
+}
 ```
 
 ```tsx
-'use client';
-import { useState } from 'react';
-import SelectProductAmount from '../single-product/SelectProductAmount';
-import { Mode } from '../single-product/SelectProductAmount';
-import FormContainer from '../form/FormContainer';
-import { SubmitButton } from '../form/Buttons';
-import { removeCartItemAction, updateCartItemAction } from '@/utils/actions';
-import { useToast } from '../ui/use-toast';
+'use client'
+import { useState } from 'react'
+import SelectProductAmount from '../single-product/SelectProductAmount'
+import { Mode } from '../single-product/SelectProductAmount'
+import FormContainer from '../form/FormContainer'
+import { SubmitButton } from '../form/Buttons'
+import { removeCartItemAction, updateCartItemAction } from '@/utils/actions'
+import { useToast } from '../ui/use-toast'
 
 function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
-  const [amount, setAmount] = useState(quantity);
+  const [amount, setAmount] = useState(quantity)
 
   const handleAmountChange = async (value: number) => {
-    setAmount(value);
-  };
+    setAmount(value)
+  }
 
   return (
-    <div className='md:ml-8'>
+    <div className="md:ml-8">
       <SelectProductAmount
         amount={amount}
         setAmount={handleAmountChange}
@@ -4612,13 +4612,13 @@ function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
         isLoading={false}
       />
       <FormContainer action={removeCartItemAction}>
-        <input type='hidden' name='id' value={id} />
-        <SubmitButton size='sm' className='mt-4' text='remove' />
+        <input type="hidden" name="id" value={id} />
+        <SubmitButton size="sm" className="mt-4" text="remove" />
       </FormContainer>
     </div>
-  );
+  )
 }
-export default ThirdColumn;
+export default ThirdColumn
 ```
 
 ### RemoveCartItem Action
@@ -4662,16 +4662,16 @@ export const updateCartItemAction = async ({
   amount,
   cartItemId,
 }: {
-  amount: number;
-  cartItemId: string;
+  amount: number
+  cartItemId: string
 }) => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
 
   try {
     const cart = await fetchOrCreateCart({
       userId: user.id,
       errorOnFailure: true,
-    });
+    })
     await db.cartItem.update({
       where: {
         id: cartItemId,
@@ -4680,49 +4680,49 @@ export const updateCartItemAction = async ({
       data: {
         amount,
       },
-    });
-    await updateCart(cart);
-    revalidatePath('/cart');
-    return { message: 'cart updated' };
+    })
+    await updateCart(cart)
+    revalidatePath('/cart')
+    return { message: 'cart updated' }
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-};
+}
 ```
 
 ### Cart Item Third Column - Complete
 
 ```tsx
-'use client';
-import { useState } from 'react';
-import SelectProductAmount from '../single-product/SelectProductAmount';
-import { Mode } from '../single-product/SelectProductAmount';
-import FormContainer from '../form/FormContainer';
-import { SubmitButton } from '../form/Buttons';
-import { removeCartItemAction, updateCartItemAction } from '@/utils/actions';
-import { useToast } from '../ui/use-toast';
-import { ReloadIcon } from '@radix-ui/react-icons';
-import { Button } from '../ui/button';
+'use client'
+import { useState } from 'react'
+import SelectProductAmount from '../single-product/SelectProductAmount'
+import { Mode } from '../single-product/SelectProductAmount'
+import FormContainer from '../form/FormContainer'
+import { SubmitButton } from '../form/Buttons'
+import { removeCartItemAction, updateCartItemAction } from '@/utils/actions'
+import { useToast } from '../ui/use-toast'
+import { ReloadIcon } from '@radix-ui/react-icons'
+import { Button } from '../ui/button'
 
 function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
-  const [amount, setAmount] = useState(quantity);
+  const [amount, setAmount] = useState(quantity)
 
-  const [isLoading, setIsLoading] = useState(false);
-  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false)
+  const { toast } = useToast()
   const handleAmountChange = async (value: number) => {
-    setIsLoading(true);
-    toast({ description: 'Calculating...' });
+    setIsLoading(true)
+    toast({ description: 'Calculating...' })
     const result = await updateCartItemAction({
       amount: value,
       cartItemId: id,
-    });
-    setAmount(value);
-    toast({ description: result.message });
-    setIsLoading(false);
-  };
+    })
+    setAmount(value)
+    toast({ description: result.message })
+    setIsLoading(false)
+  }
 
   return (
-    <div className='md:ml-8'>
+    <div className="md:ml-8">
       <SelectProductAmount
         amount={amount}
         setAmount={handleAmountChange}
@@ -4730,13 +4730,13 @@ function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
         isLoading={isLoading}
       />
       <FormContainer action={removeCartItemAction}>
-        <input type='hidden' name='id' value={id} />
-        <SubmitButton size='sm' className='mt-4' text='remove' />
+        <input type="hidden" name="id" value={id} />
+        <SubmitButton size="sm" className="mt-4" text="remove" />
       </FormContainer>
     </div>
-  );
+  )
 }
-export default ThirdColumn;
+export default ThirdColumn
 ```
 
 ### Bug Fix
@@ -4759,18 +4759,18 @@ export const updateCart = async (cart: Cart) => {
     orderBy: {
       createdAt: 'asc',
     },
-  });
+  })
 
-  let numItemsInCart = 0;
-  let cartTotal = 0;
+  let numItemsInCart = 0
+  let cartTotal = 0
 
   for (const item of cartItems) {
-    numItemsInCart += item.amount;
-    cartTotal += item.amount * item.product.price;
+    numItemsInCart += item.amount
+    cartTotal += item.amount * item.product.price
   }
-  const tax = cart.taxRate * cartTotal;
-  const shipping = cartTotal ? cart.shipping : 0;
-  const orderTotal = cartTotal + tax + shipping;
+  const tax = cart.taxRate * cartTotal
+  const shipping = cartTotal ? cart.shipping : 0
+  const orderTotal = cartTotal + tax + shipping
 
   const currentCart = await db.cart.update({
     where: {
@@ -4784,44 +4784,44 @@ export const updateCart = async (cart: Cart) => {
       orderTotal,
     },
     include: includeProductClause,
-  });
-  return { currentCart, cartItems };
-};
+  })
+  return { currentCart, cartItems }
+}
 ```
 
 - app/cart/page.tsx
 
 ```tsx
-import CartItemsList from '@/components/cart/CartItemsList';
-import CartTotals from '@/components/cart/CartTotals';
-import SectionTitle from '@/components/global/SectionTitle';
-import { fetchOrCreateCart, updateCart } from '@/utils/actions';
-import { auth } from '@clerk/nextjs/server';
-import { redirect } from 'next/navigation';
+import CartItemsList from '@/components/cart/CartItemsList'
+import CartTotals from '@/components/cart/CartTotals'
+import SectionTitle from '@/components/global/SectionTitle'
+import { fetchOrCreateCart, updateCart } from '@/utils/actions'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 async function CartPage() {
-  const { userId } = auth();
-  if (!userId) redirect('/');
-  const previousCart = await fetchOrCreateCart({ userId });
-  const { cartItems, currentCart } = await updateCart(previousCart);
+  const { userId } = auth()
+  if (!userId) redirect('/')
+  const previousCart = await fetchOrCreateCart({ userId })
+  const { cartItems, currentCart } = await updateCart(previousCart)
 
   if (cartItems.length === 0) {
-    return <SectionTitle text='Empty cart' />;
+    return <SectionTitle text="Empty cart" />
   }
   return (
     <>
-      <SectionTitle text='Shopping Cart' />
-      <div className='mt-8 grid gap-4 lg:grid-cols-12'>
-        <div className='lg:col-span-8'>
+      <SectionTitle text="Shopping Cart" />
+      <div className="mt-8 grid gap-4 lg:grid-cols-12">
+        <div className="lg:col-span-8">
           <CartItemsList cartItems={cartItems} />
         </div>
-        <div className='lg:col-span-4 lg:pl-4'>
+        <div className="lg:col-span-4 lg:pl-4">
           <CartTotals cart={currentCart} />
         </div>
       </div>
     </>
-  );
+  )
 }
-export default CartPage;
+export default CartPage
 ```
 
 ### Order Model
@@ -4845,12 +4845,12 @@ model Order {
 
 ```ts
 export const createOrderAction = async (prevState: any, formData: FormData) => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
   try {
     const cart = await fetchOrCreateCart({
       userId: user.id,
       errorOnFailure: true,
-    });
+    })
     const order = await db.order.create({
       data: {
         clerkId: user.id,
@@ -4860,20 +4860,20 @@ export const createOrderAction = async (prevState: any, formData: FormData) => {
         shipping: cart.shipping,
         email: user.emailAddresses[0].emailAddress,
       },
-    });
+    })
 
     await db.cart.delete({
       where: {
         id: cart.id,
       },
-    });
+    })
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-  redirect('/orders');
-};
+  redirect('/orders')
+}
 export const fetchUserOrders = async () => {
-  const user = await getAuthUser();
+  const user = await getAuthUser()
   const orders = await db.order.findMany({
     where: {
       clerkId: user.id,
@@ -4882,12 +4882,12 @@ export const fetchUserOrders = async () => {
     orderBy: {
       createdAt: 'desc',
     },
-  });
-  return orders;
-};
+  })
+  return orders
+}
 
 export const fetchAdminOrders = async () => {
-  const user = await getAdminUser();
+  const user = await getAdminUser()
 
   const orders = await db.order.findMany({
     where: {
@@ -4896,9 +4896,9 @@ export const fetchAdminOrders = async () => {
     orderBy: {
       createdAt: 'desc',
     },
-  });
-  return orders;
-};
+  })
+  return orders
+}
 ```
 
 ### Orders Page
@@ -4911,21 +4911,21 @@ export const formatDate = (date: Date) => {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }).format(date);
-};
+  }).format(date)
+}
 ```
 
 - create app/orders/loading.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import LoadingTable from '@/components/global/LoadingTable';
+import LoadingTable from '@/components/global/LoadingTable'
 
 function loading() {
-  return <LoadingTable />;
+  return <LoadingTable />
 }
-export default loading;
+export default loading
 ```
 
 - app/orders/page.tsx
@@ -4939,17 +4939,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/components/ui/table'
 
-import SectionTitle from '@/components/global/SectionTitle';
-import { fetchUserOrders } from '@/utils/actions';
-import { formatCurrency, formatDate } from '@/utils/format';
+import SectionTitle from '@/components/global/SectionTitle'
+import { fetchUserOrders } from '@/utils/actions'
+import { formatCurrency, formatDate } from '@/utils/format'
 async function OrdersPage() {
-  const orders = await fetchUserOrders();
+  const orders = await fetchUserOrders()
 
   return (
     <>
-      <SectionTitle text='Your Orders' />
+      <SectionTitle text="Your Orders" />
       <div>
         <Table>
           <TableCaption>Total orders : {orders.length}</TableCaption>
@@ -4965,7 +4965,7 @@ async function OrdersPage() {
           <TableBody>
             {orders.map((order) => {
               const { id, products, orderTotal, tax, shipping, createdAt } =
-                order;
+                order
 
               return (
                 <TableRow key={order.id}>
@@ -4975,15 +4975,15 @@ async function OrdersPage() {
                   <TableCell>{formatCurrency(shipping)}</TableCell>
                   <TableCell>{formatDate(createdAt)}</TableCell>
                 </TableRow>
-              );
+              )
             })}
           </TableBody>
         </Table>
       </div>
     </>
-  );
+  )
 }
-export default OrdersPage;
+export default OrdersPage
 ```
 
 ### Admin - Sales Page
@@ -4991,14 +4991,14 @@ export default OrdersPage;
 - create app/admin/sales/loading.tsx
 
 ```tsx
-'use client';
+'use client'
 
-import LoadingTable from '@/components/global/LoadingTable';
+import LoadingTable from '@/components/global/LoadingTable'
 
 function loading() {
-  return <LoadingTable />;
+  return <LoadingTable />
 }
-export default loading;
+export default loading
 ```
 
 - app/admin/sales/page.tsx
@@ -5012,12 +5012,12 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/components/ui/table'
 
-import { fetchAdminOrders } from '@/utils/actions';
-import { formatCurrency, formatDate } from '@/utils/format';
+import { fetchAdminOrders } from '@/utils/actions'
+import { formatCurrency, formatDate } from '@/utils/format'
 async function SalesPage() {
-  const orders = await fetchAdminOrders();
+  const orders = await fetchAdminOrders()
 
   return (
     <div>
@@ -5043,7 +5043,7 @@ async function SalesPage() {
               shipping,
               createdAt,
               email,
-            } = order;
+            } = order
 
             return (
               <TableRow key={order.id}>
@@ -5054,14 +5054,14 @@ async function SalesPage() {
                 <TableCell>{formatCurrency(shipping)}</TableCell>
                 <TableCell>{formatDate(createdAt)}</TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </div>
-  );
+  )
 }
-export default SalesPage;
+export default SalesPage
 ```
 
 ### Stripe
@@ -5091,21 +5091,21 @@ model Order {
 
 ```ts
 export const createOrderAction = async (prevState: any, formData: FormData) => {
-  const user = await getAuthUser();
-  let orderId: null | string = null;
-  let cartId: null | string = null;
+  const user = await getAuthUser()
+  let orderId: null | string = null
+  let cartId: null | string = null
   try {
     const cart = await fetchOrCreateCart({
       userId: user.id,
       errorOnFailure: true,
-    });
-    cartId = cart.id;
+    })
+    cartId = cart.id
     await db.order.deleteMany({
       where: {
         clerkId: user.id,
         isPaid: false,
       },
-    });
+    })
 
     const order = await db.order.create({
       data: {
@@ -5116,13 +5116,13 @@ export const createOrderAction = async (prevState: any, formData: FormData) => {
         shipping: cart.shipping,
         email: user.emailAddresses[0].emailAddress,
       },
-    });
-    orderId = order.id;
+    })
+    orderId = order.id
   } catch (error) {
-    return renderError(error);
+    return renderError(error)
   }
-  redirect(`/checkout?orderId=${orderId}&cartId=${cartId}`);
-};
+  redirect(`/checkout?orderId=${orderId}&cartId=${cartId}`)
+}
 ```
 
 ### Stripe ClientSecret Fetch Call and Response Diagram
@@ -5145,44 +5145,44 @@ Checkout.tsx                        payment/route.ts
 - create app/checkout/page.tsx
 
 ```tsx
-'use client';
-import axios from 'axios';
-import { useSearchParams } from 'next/navigation';
-import React, { useCallback } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
+'use client'
+import axios from 'axios'
+import { useSearchParams } from 'next/navigation'
+import React, { useCallback } from 'react'
+import { loadStripe } from '@stripe/stripe-js'
 import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
-} from '@stripe/react-stripe-js';
+} from '@stripe/react-stripe-js'
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
-);
+)
 
 export default function CheckoutPage() {
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams()
 
-  const orderId = searchParams.get('orderId');
-  const cartId = searchParams.get('cartId');
+  const orderId = searchParams.get('orderId')
+  const cartId = searchParams.get('cartId')
 
   const fetchClientSecret = useCallback(async () => {
     // Create a Checkout Session
     const response = await axios.post('/api/payment', {
       orderId: orderId,
       cartId: cartId,
-    });
-    return response.data.clientSecret;
-  }, []);
+    })
+    return response.data.clientSecret
+  }, [])
 
-  const options = { fetchClientSecret };
+  const options = { fetchClientSecret }
 
   return (
-    <div id='checkout'>
+    <div id="checkout">
       <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
         <EmbeddedCheckout />
       </EmbeddedCheckoutProvider>
     </div>
-  );
+  )
 }
 ```
 
@@ -5191,22 +5191,22 @@ export default function CheckoutPage() {
 - create api/payment/route.ts
 
 ```ts
-import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
-import { type NextRequest } from 'next/server';
-import db from '@/utils/db';
+import Stripe from 'stripe'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
+import { type NextRequest } from 'next/server'
+import db from '@/utils/db'
 
 export const POST = async (req: NextRequest) => {
-  const requestHeaders = new Headers(req.headers);
-  const origin = requestHeaders.get('origin');
+  const requestHeaders = new Headers(req.headers)
+  const origin = requestHeaders.get('origin')
 
-  const { orderId, cartId } = await req.json();
+  const { orderId, cartId } = await req.json()
 
   const order = await db.order.findUnique({
     where: {
       id: orderId,
     },
-  });
+  })
   const cart = await db.cart.findUnique({
     where: {
       id: cartId,
@@ -5218,12 +5218,12 @@ export const POST = async (req: NextRequest) => {
         },
       },
     },
-  });
+  })
   if (!order || !cart) {
     return Response.json(null, {
       status: 404,
       statusText: 'Not Found',
-    });
+    })
   }
   const line_items = cart.cartItems.map((cartItem) => {
     return {
@@ -5236,8 +5236,8 @@ export const POST = async (req: NextRequest) => {
         },
         unit_amount: cartItem.product.price * 100, // price in cents
       },
-    };
-  });
+    }
+  })
   try {
     const session = await stripe.checkout.sessions.create({
       ui_mode: 'embedded',
@@ -5245,18 +5245,18 @@ export const POST = async (req: NextRequest) => {
       line_items: line_items,
       mode: 'payment',
       return_url: `${origin}/api/confirm?session_id={CHECKOUT_SESSION_ID}`,
-    });
+    })
 
-    return Response.json({ clientSecret: session.client_secret });
+    return Response.json({ clientSecret: session.client_secret })
   } catch (error) {
-    console.log(error);
+    console.log(error)
 
     return Response.json(null, {
       status: 500,
       statusText: 'Internal Server Error',
-    });
+    })
   }
-};
+}
 ```
 
 - product structure
@@ -5272,7 +5272,7 @@ return {
     },
     unit_amount: cartItem.product.price * 100, // price in cents
   },
-};
+}
 ```
 
 ```plaintext
@@ -5291,23 +5291,23 @@ payment/route.ts                    confirm/route.ts            orders page
 ### API - Confirm Route
 
 ```ts
-import Stripe from 'stripe';
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
-import { redirect } from 'next/navigation';
+import Stripe from 'stripe'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string)
+import { redirect } from 'next/navigation'
 
-import { type NextRequest } from 'next/server';
-import db from '@/utils/db';
+import { type NextRequest } from 'next/server'
+import db from '@/utils/db'
 
 export const GET = async (req: NextRequest) => {
-  const { searchParams } = new URL(req.url);
-  const session_id = searchParams.get('session_id') as string;
+  const { searchParams } = new URL(req.url)
+  const session_id = searchParams.get('session_id') as string
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(session_id);
+    const session = await stripe.checkout.sessions.retrieve(session_id)
     // console.log(session);
 
-    const orderId = session.metadata?.orderId;
-    const cartId = session.metadata?.cartId;
+    const orderId = session.metadata?.orderId
+    const cartId = session.metadata?.cartId
     if (session.status === 'complete') {
       await db.order.update({
         where: {
@@ -5316,20 +5316,20 @@ export const GET = async (req: NextRequest) => {
         data: {
           isPaid: true,
         },
-      });
+      })
       await db.cart.delete({
         where: {
           id: cartId,
         },
-      });
+      })
     }
   } catch (err) {
-    console.log(err);
+    console.log(err)
     return Response.json(null, {
       status: 500,
       statusText: 'Internal Server Error',
-    });
+    })
   }
-  redirect('/orders');
-};
+  redirect('/orders')
+}
 ```
